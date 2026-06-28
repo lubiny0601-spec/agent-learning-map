@@ -1,0 +1,40 @@
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment variables and secrets
+.env
+.env.*
+*.pem
+*.key
+*.token
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Local AI / agent outputs
+.trae-local/
+.cache/
