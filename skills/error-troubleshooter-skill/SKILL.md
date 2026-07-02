@@ -1,50 +1,50 @@
 ---
 name: "error-troubleshooter-skill"
-description: "Analyzes terminal or application errors for beginners and provides step-by-step resolution. Invoke when a user reports build, install, environment, or execution errors."
+description: "为初学者分析控制台/终端或应用报错并提供分步解决方案。在用户反馈构建失败、安装报错、环境异常或运行中断时调用此 Skill。"
 ---
 
-# Error Troubleshooter Skill
+# 报错排查助手 (Error Troubleshooter Skill)
 
-## Purpose
+## 目标
 
-This skill guides an Agent in analyzing terminal or application errors for beginners in the `Agent 学习地图` project. It aims to demystify cryptic error logs and provide safe, step-by-step instructions to resolve them. 
+此 Skill 用于在 `Agent 学习地图` 项目中，为毫无技术底子的初学者分析终端控制台或应用程序的报错日志。它旨在揭开冰冷、隐晦的英文报错日志的神秘面纱，提供安全、清晰且分步的调试和修复方案。
 
-Beginners often panic when they see red text in a terminal. They might copy-paste random suggestions from the web, which can lead to package version conflicts, broken system environments, or data loss. This skill focuses on delivering a calm, structured, and protective debugging experience.
+新手在控制台看到红色报错信息时往往容易慌张。他们可能会盲目复制粘贴网上的命令，这极易导致依赖包版本冲突、系统环境彻底损坏甚至本地数据丢失。此 Skill 的核心在于为学员提供冷静、结构化且具备安全防线的调试排错体验。
 
-Use this skill when the user:
-- Pastes terminal output containing errors or warnings (e.g., `npm ERR!`, `ModuleNotFoundError`, `command not found`).
-- Reports that their page or application is blank, frozen, or behaving unexpectedly.
-- Asks for help resolving dependency installation, version, or build issues.
+在用户遇到以下情况时调用此 Skill：
+- 粘贴了包含错误或警告的终端输出（如 `npm ERR!`、`ModuleNotFoundError`、`command not found` 等）。
+- 反馈他们的网页或应用打开是一片空白、卡死或运行结果异常。
+- 寻求关于依赖包安装失败、版本冲突或构建（Build）报错的帮助。
 
-## Input Requirements
+## 输入要求
 
-To provide an accurate diagnostic report, try to obtain:
-- **Exact Error Message**: The raw terminal text or log files (if too long, the last 20 lines).
-- **Environment**: OS (Windows, macOS, Linux), Node.js/Python version.
-- **Previous Action**: What command or action triggered the error (e.g., "I ran `npm run dev` after cloning").
-- **Configuration Files**: Relevant files like `package.json`, `requirements.txt`, or `.env`.
+为了提供精准的诊断排查报告，尽可能获取：
+- **精确的报错信息**：原始的终端输出或日志文件内容（如果太长，提供最后 20 行即可）。
+- **当前开发环境**：操作系统（Windows/macOS/Linux）、Node.js 或 Python 的版本号。
+- **触发前的一步操作**：用户是在执行了什么命令后报错的（例如：“我克隆了项目，运行 `npm run dev` 后报错的”）。
+- **相关配置文件**：如 `package.json`、`requirements.txt` 或 `.env` 等。
 
-If details are missing, proceed with diagnosing the most probable cause based on the error signature and use placeholders `[待确认]`.
+如果部分细节缺失，基于报错特征对最可能的原因进行诊断，并用 `[待确认]` 标注不确定项。
 
-## Analysis Principles
+## 分析与撰写原则
 
-1. **Categorize the Error**:
-   - **Environment/Path Errors** (e.g., `'git' is not recognized`): The tool is not installed or not in the system PATH.
-   - **Dependency Errors** (e.g., `Cannot find module`): Required packages are missing.
-   - **Syntax/Code Errors** (e.g., `Unexpected token`): Typos or broken code syntax.
-   - **Network/API Errors** (e.g., `ETIMEDOUT`): Proxy, VPN, or server outage.
-   - **Permission Errors** (e.g., `EACCES` or `Access Denied`): Running commands without administrative privileges, or file lock.
-2. **Translate Jargon to Real-World Analogies**:
-   - Explain *Module not found* as: "就像食谱里写着需要胡椒粉，但你的调料架上还没有买胡椒粉。"
-   - Explain *Command not found* as: "你的电脑不知道这个工具的名字。这通常是因为你还没买（安装）它，或者它放在抽屉里电脑找不到（没加到环境变量）。"
-3. **Enforce Safety Guards**:
-   - **Never** instruct a user to delete files or run `rm -rf` without a backup warning.
-   - **Never** suggest `--force` or `sudo` flags unless absolutely necessary, and explain the side effects.
-   - Suggest temporary local fixes over global system changes.
+1. **对报错分类归因**：
+   - **环境/路径错误**（如 `'git' is not recognized`）：工具未安装，或未被加入系统环境变量 PATH 中。
+   - **依赖包错误**（如 `Cannot find module`）：缺少运行所需的第三方依赖包。
+   - **语法/代码错误**（如 `Unexpected token`）：代码存在拼写错误或语法破损。
+   - **网络/API 错误**（如 `ETIMEDOUT`）：代理配置错误、VPN 异常或服务器断开连接。
+   - **权限错误**（如 `EACCES` 或 `Access Denied`）：未以管理员身份运行命令，或文件被系统占用锁死。
+2. **将专业黑话翻译成生活类比**：
+   - 将 *Module not found* 解释为：“就像食谱里写着需要胡椒粉，但你翻遍厨房调料架发现还没买胡椒粉，需要去超市买（安装）一包。”
+   - 将 *Command not found* 解释为：“电脑不认识你输入的这个工具名字。这通常是因为你还没安装它，或者它装在了别的抽屉里，电脑找不到它在哪（未加入环境变量）。”
+3. **贯彻安全防御原则**：
+   - **绝对禁止**在不提醒备份的情况下让用户删除文件或运行 `rm -rf`。
+   - **极力避免**引导用户使用 `--force` 或 `sudo` 等强力命令，除非万不得已，且必须向用户说明其可能带来的系统损坏副作用。
+   - 优先推荐局部项目级修复方案，而不是全局系统级改动。
 
-## Output Structure
+## 输出结构
 
-Use this structure unless the user requests another format:
+除非用户另有要求，否则请使用以下结构：
 
 ```markdown
 # 报错排查报告：[简明报错名称]
@@ -96,10 +96,10 @@ Use this structure unless the user requests another format:
 如何确认问题已经完全解决（如：重新运行 `npm run dev`，打开浏览器看到页面显示正常）。
 ```
 
-## Quality Standards
+## 质量标准
 
-Before finalizing, check:
-- Is the tone encouraging and calm?
-- Are the terminal commands safe to copy-paste?
-- Did you mention operating-system-specific variations if they exist (e.g., Powershell vs Bash)?
-- Are placeholders like directories written as generic templates (e.g., `[你的项目路径]`) rather than hardcoded usernames?
+在输出前，验证：
+- 排错语气是否冷静、鼓励人心（新手容易在报错时感到挫败）。
+- 终端命令行是否绝对安全，可放心复制粘贴。
+- 是否考虑到了不同操作系统的差异（如 PowerShell 与 Bash 的命令差异）。
+- 占位符（如目录路径）是否被写成了通用的泛化模板（如 `[你的项目路径]`），而不是写死个人系统用户名。

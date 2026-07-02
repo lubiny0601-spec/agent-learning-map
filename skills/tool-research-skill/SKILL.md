@@ -1,79 +1,76 @@
 ---
 name: "tool-research-skill"
-description: "Researches AI tools and creates beginner learning pages. Invoke when explaining Cursor, Codex, Claude Code, Antigravity, or similar tools."
+description: "研究 AI 工具并生成新手学习页。在解释 Cursor、Codex、Claude Code、Antigravity 或类似工具时调用此 Skill。"
 ---
 
-# Tool Research Skill
+# 工具研究助手 (Tool Research Skill)
 
-## Purpose
+## 目标
 
-This skill researches an AI tool and turns the findings into a beginner-friendly learning page for the `Agent 学习地图` project. The goal is to help new users understand what the tool is, whether they should use it, how to start, and what task they can complete first.
+此 Skill 用于研究特定的 AI 工具，并将其转化为适合初学者的“工具学习页”，供 `Agent 学习地图` 项目使用。其终极目标是帮助新手学员快速搞懂该工具是什么、自己是否需要学习它、如何上手配置，以及如何完成他们的第一个上手任务。
 
-Use this skill when the user asks to create or update a learning page for tools such as:
+在用户要求为以下工具创建或更新学习页面时调用此 Skill：
 
 - Cursor
 - Codex
 - Claude Code
 - Antigravity
-- ChatGPT, Claude, Gemini, DeepSeek, Kimi, or similar large model tools
-- Dify, Coze, n8n, Zapier AI, Manus, or Agent workflow platforms
-- Ollama, LM Studio, or local model tools
-- MCP clients, plugins, or developer assistants
+- ChatGPT、Claude、Gemini、DeepSeek、Kimi 等主流大模型工具
+- Dify、Coze、n8n、Zapier AI、Manus 等 Agent 或工作流平台
+- Ollama、LM Studio 等本地运行大模型工具
+- MCP 客户端、插件或开发者辅助工具
 
-## Source Rules
+## 信息来源原则
 
-For fast-changing product details, use official documentation, product pages, release notes, or repository README files when available. Do not invent:
+针对快速变化的产品细节，应尽可能参考官方文档、产品官网、发布日志（Release Notes）或 GitHub 仓库 README。切勿凭空捏造：
+- 价格与订阅机制
+- 支持的底层模型
+- 开放范围或内测申请状态
+- 操作系统平台支持情况
+- 精确的 UI 界面菜单名称
+- 功能限制或额度
+- 路线图（Roadmap）承诺
 
-- Pricing
-- Supported models
-- Availability
-- Platform support
-- Exact UI names
-- Feature limits
-- Roadmap claims
+若信息未得到确认，请用 `[待确认]` 标注。
 
-If the information is not confirmed, write `[待确认]`.
+## 输入要求
 
-## Input Requirements
+有价值的输入信息包括：
+- 工具名称
+- 目标用户的技术背景水平
+- 官方网址或 GitHub 仓库地址
+- 期望的输出格式
+- 页面定位（介绍、对比或实操教程）
+- 是否需要与其他同类工具进行对比
 
-Useful inputs include:
+如果用户仅提供了一个工具名称，请输出一份通用的新手工具学习页，并将不确定的细节进行标注。
 
-- Tool name
-- Target user level
-- Official website or GitHub repository
-- Desired output format
-- Whether the page is for introduction, comparison, or tutorial
-- Whether the tool should be compared with other tools
+## 研究维度
 
-If the user only gives a tool name, produce a general beginner learning page and mark uncertain details.
+应围绕以下维度对工具进行拆解和研究：
+- 该工具到底是什么
+- 它能解决什么痛点问题
+- 它适合谁使用
+- 它不适合谁使用
+- 核心功能与特色能力
+- 安装或接入的具体方法
+- 基础使用流程
+- 推荐新手的第一个练手任务
+- 初学者常见踩坑点
+- 安全隐患或资费提醒
+- 与同类工具的差异与优劣对比
+- 推荐首发任务
 
-## Research Dimensions
+## 输出结构
 
-Research and explain the tool across these dimensions:
-
-- What the tool is
-- What problem it solves
-- Who it is suitable for
-- Who it is not suitable for
-- Core capabilities
-- Setup or access method
-- Basic usage flow
-- Typical beginner tasks
-- Common mistakes
-- Safety or cost concerns
-- Similar tools and differences
-- Recommended first task
-
-## Output Structure
-
-Use this structure unless the user asks for another format:
+除非用户另有要求，否则请使用以下结构：
 
 ```markdown
 # 工具名称：新手学习页
 
 ## 一句话解释
 
-用一句新手能理解的话解释这个工具。
+用一句新手能理解的大白话解释这个工具。
 
 ## 适合谁
 
@@ -111,35 +108,33 @@ Use this structure unless the user asks for another format:
 ## 学完后下一步
 ```
 
-## Beginner Explanation Rules
+## 小白化术语转换规则
 
-Explain technical terms inline when they first appear.
+当专业技术术语首次在页面中出现时，必须在括号内用中文大白话进行解释。
 
-Examples:
+示例：
+- `Repository`（仓库）：解释为“GitHub 上存放一个项目文件的地方”。
+- `Clone`（克隆）：解释为“把 GitHub 上的项目复制一份到你自己的电脑上”。
+- `API Key`（密钥）：解释为“一串用于证明你有权调用 AI 服务的通行密码”。
+- `Dependency`（依赖）：解释为“项目正常运行所需要安装的各种辅助工具包”。
 
-- `Repository` should be explained as “GitHub 上存放一个项目的地方”.
-- `Clone` should be explained as “把 GitHub 项目复制到你的电脑上”.
-- `API Key` should be explained as “一串用于证明你有权限调用服务的密钥”.
-- `Dependency` should be explained as “项目运行时需要的工具包”.
+## 质量标准
 
-## Quality Standards
+在输出前，对照检查：
+- 首段是否解释了为什么该工具对初学者很重要。
+- 页面是否能有效帮助用户做决策（决定要不要花时间学它）。
+- 安装与准备流程是否足够具体、可操作。
+- 推荐的新手任务是否微小且具备现实可行性。
+- 内容绝无夸大，客观描述工具局限性。
+- 凡涉及代码运行、扣费、密钥和本地文件修改时，是否给出了明显的风险提示。
+- 针对时效性强的信息，是否给出了参考来源或标注 `[待确认]`。
 
-Before finalizing, check:
-
-- The first paragraph explains why the tool matters to a beginner.
-- The page helps a user decide whether to learn the tool.
-- The setup flow is concrete enough to follow.
-- The first task is small and realistic.
-- The content does not exaggerate the tool's abilities.
-- Risk reminders are included for code execution, billing, API Keys, and local file changes.
-- Fast-changing claims are either sourced or marked `[待确认]`.
-
-## Example Request
+## 示例请求
 
 ```text
 请使用 tool-research-skill，为 Cursor 写一篇适合 AI 初学者的工具学习页。
 ```
 
-## Example Output Style
+## 示例输出风格
 
-Write in plain Chinese for `Agent 学习地图` unless the user requests another language. Avoid marketing tone. Focus on clarity, decisions, and first-use success.
+在 `Agent 学习地图` 项目中，除非用户特别要求，否则应默认输出通俗易懂的简体中文。避免夸大的营销文风，聚焦于清晰度、决策辅助和首次使用成功率。

@@ -1,68 +1,65 @@
 ---
 name: "sop-writer-skill"
-description: "Writes beginner-friendly SOP tutorials. Invoke when creating step-by-step AI tool, GitHub, Agent, Skill, API Key, or setup instructions."
+description: "编写适合小白的 SOP 教程。在创建分步 AI 工具、GitHub、Agent、Skill、API Key 或环境配置指南时调用此 Skill。"
 ---
 
-# SOP Writer Skill
+# SOP 撰写助手 (SOP Writer Skill)
 
-## Purpose
+## 目标
 
-This skill converts a technical operation into a beginner-friendly SOP that users can follow step by step. It is designed for the `Agent 学习地图` project, where the core content is not abstract explanation but practical guidance that helps a new learner complete a real task.
+此 Skill 用于将复杂的技术操作转化为适合小白的、可分步执行 of SOP（标准作业程序）教程。该 Skill 专门为 `Agent 学习地图` 项目设计，其核心是提供实操性指南，帮助新手学员顺利完成真实的任务，而不是枯燥的抽象概念解释。
 
-Use this skill when the user asks to write, rewrite, standardize, or improve an SOP for:
+在用户要求编写、重写、规范或优化以下领域的 SOP 时调用此 Skill：
 
-- AI Agent usage
-- Cursor, Codex, Claude Code, Antigravity, or other AI tools
-- GitHub project download, clone, README reading, issue submission, or release usage
-- Skill installation or import
-- API Key configuration
-- MCP setup
-- Project running, dependency installation, or basic troubleshooting
+- AI Agent 的实际应用
+- Cursor、Codex、Claude Code、Antigravity 或其他 AI 工具的实操
+- GitHub 项目的下载、克隆、README 阅读、Issue 提交或 Release 的使用
+- Skill 的安装与导入
+- API Key 密钥的配置
+- MCP 服务的部署
+- 项目运行、依赖安装或基础环境排错
 
-## Input Requirements
+## 输入要求
 
-Ask for missing information only when it materially changes the SOP. If details are unknown, mark them as `[待确认]` instead of inventing them.
+仅在缺失信息会对 SOP 产生实质性影响时，才向用户追问。如果细节未知，请用 `[待确认]` 标注，切勿凭空编造。
 
-Useful inputs include:
+有价值的输入信息包括：
+- 目标任务
+- 目标工具或平台
+- 用户的技术水平（默认为纯小白）
+- 操作系统（若相关）
+- 所需的账号、API Key 密钥或相关权限
+- 来源链接、文件或仓库地址
+- 预期的最终结果
+- 已知的报错或风险点
 
-- Target task
-- Target tool or platform
-- User skill level
-- Operating system, if relevant
-- Required account, API Key, or permissions
-- Source link, file, or repository
-- Expected final result
-- Known errors or risks
+## 撰写原则
 
-## Writing Principles
+撰写时需假定读者完全不懂 GitHub、终端命令行、环境变量或 Agent 相关术语。
 
-Write for a user who may not understand GitHub, terminal commands, environment variables, or Agent terminology.
+每一篇 SOP 必须：
+- 以**明确的任务目标**开篇
+- 说明**适合谁**（目标读者）
+- 说明**前置准备条件**
+- 将整体流程拆解为**微小的可执行步骤**
+- 明确告诉用户该**点击什么、复制什么、粘贴什么或检查什么**
+- 在每个关键步骤后提供**成功标识（预期看到的结果）**
+- 列出**常见的失败原因及解决方法**
+- 凡涉及密钥、脚本、权限或本地敏感文件时，必须包含**安全提醒**
+- 以明确的**验收完成标准**收尾
 
-Every SOP must:
+避免使用以下含糊不清的指引：
+- “配置环境”
+- “运行项目”
+- “参考 README”
+- “安装依赖”
+- “自行检查报错”
 
-- Start with the task goal
-- Explain who it is for
-- State prerequisites
-- Break the process into small steps
-- Tell the user what to click, copy, paste, or check
-- Include the expected result after each major step
-- Include common failure points
-- Include safety reminders when keys, scripts, permissions, or local files are involved
-- End with a clear success standard
+应替换为具体的动作指令、代码示例和预期控制台输出。
 
-Avoid vague instructions like:
+## 输出结构
 
-- "配置环境"
-- "运行项目"
-- "参考 README"
-- "安装依赖"
-- "自行检查报错"
-
-Replace them with concrete actions, examples, and expected outputs.
-
-## Output Structure
-
-Use this structure unless the user asks for another format:
+除非用户另有要求，否则请使用以下结构：
 
 ```markdown
 # SOP 标题
@@ -107,23 +104,22 @@ Use this structure unless the user asks for another format:
 ## 完成标准
 ```
 
-## Quality Standards
+## 质量标准
 
-Before finalizing, check:
+在完成输出前，对照检查：
+- 用户是否无需任何前置专家知识即可顺利照着做完。
+- 每个命令行是否有简短的大白话解释。
+- 每个步骤是否有可见的成功提示。
+- 在运行未知脚本或暴露 API Key 之前，是否给出了安全警告。
+- 任何不确定的路径、命令或平台特异性行为均已标注 `[待确认]`。
+- 绝不出现无法兑现的承诺，未经验证的步骤极力避免夸大。
 
-- The SOP can be followed without prior expert knowledge.
-- Every command has a short explanation.
-- Every step has a visible success indicator.
-- The user is warned before running unknown scripts or exposing API Keys.
-- Any uncertain path, command, or platform-specific behavior is marked `[待确认]`.
-- The SOP avoids unsupported claims and does not pretend to have verified a step unless verification was actually performed.
-
-## Example Request
+## 示例请求
 
 ```text
 请把“从 GitHub 下载项目并用 Cursor 打开”写成 AI 初学者可以照着做的 SOP。
 ```
 
-## Example Output Style
+## 示例输出风格
 
-The final output should be practical, calm, and specific. Prefer plain Chinese for `Agent 学习地图` content unless the user requests another language.
+最终的输出应是实用的、严谨且具体的。在 `Agent 学习地图` 项目中，除非用户特别要求，否则应默认输出通俗易懂的简体中文。

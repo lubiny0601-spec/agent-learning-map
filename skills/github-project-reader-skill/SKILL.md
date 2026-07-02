@@ -1,76 +1,72 @@
 ---
 name: "github-project-reader-skill"
-description: "Explains GitHub repositories for beginners. Invoke when analyzing README, repo structure, releases, issues, setup, or project suitability."
+description: "面向初学者解读 GitHub 仓库项目。在分析 README、项目目录结构、Release、Issue、安装部署或项目适用性时调用此 Skill。"
 ---
 
-# GitHub Project Reader Skill
+# GitHub 项目阅读助手 (GitHub Project Reader Skill)
 
-## Purpose
+## 目标
 
-This skill reads and explains a GitHub repository in beginner-friendly language for the `Agent 学习地图` project. It helps users understand what a repository does, whether it is safe and suitable for them, how to read the README, how to install or run it, and how to ask an Agent for help.
+此 Skill 用于用通俗易懂的“小白化”语言，对 GitHub 上的开源项目仓库进行剖析和解读，供 `Agent 学习地图` 项目使用。它旨在帮助没有任何技术底子的新手学员快速搞懂：一个 GitHub 仓库到底是做什么的、是否安全且适合自己学习、如何阅读其 README 说明书、如何安装与运行它，以及在遇到困难时如何向 AI Agent 提问求助。
 
-Use this skill when the user provides or asks about:
+在用户提供或咨询以下内容时调用此 Skill：
+- 一个 GitHub 仓库链接
+- 一份 README 说明书文件内容
+- 从 GitHub 下载复制过来的本地项目文件夹
+- 一个 GitHub Release（发布版本）页面
+- 一个 GitHub Issue（问题反馈）或报错日志
+- 一个 Skill 仓库文件
+- 任何开源 AI 工具或 Agent 项目
 
-- A GitHub repository link
-- A README file
-- A project folder copied from GitHub
-- A GitHub Release page
-- An Issue or error report
-- A Skill repository
-- An open-source AI tool or Agent project
+## 安全第一原则
 
-## Safety First
+**绝对不能**盲目地指导初学者运行任何来路不明的脚本或命令。
 
-Never tell a beginner to run unknown scripts blindly.
+必须主动排查并向用户解释以下潜在的安全隐患或风险点：
+- 敏感 API Key（密钥）暴露的风险
+- 来源不明的安装脚本
+- 包含删除、覆盖或上传文件的命令（如危险的 `rm -rf` 或上传操作）
+- 申请不必要的高级权限（如管理员权限）
+- 开源许可协议（License）不明或使用受限
+- 仓库已被长期废弃，无人维护
+- 缺失必要的安装和运行指引
+- 代码中存在写死的敏感账密或私钥
 
-Always look for and explain risks such as:
+如果无法百分之百确定其安全性，请用 `[风险待确认]` 标注。
 
-- API Key exposure
-- Unknown install scripts
-- Commands that delete, overwrite, or upload files
-- Requests for unnecessary permissions
-- Unclear license
-- Abandoned repository
-- Missing setup instructions
-- Hardcoded secrets
+## 输入要求
 
-If safety cannot be determined, write `[风险待确认]`.
+有价值的输入信息包括：
+- GitHub 仓库链接地址
+- 本地项目文件夹路径
+- README 说明书内容
+- 用户的操作系统（Windows/macOS/Linux）
+- 用户的核心学习目标
+- 具体报错信息
+- 用户的使用意图（学习、运行、修改还是仅安装）
 
-## Input Requirements
+如果无法获取到仓库的任何具体内容，请礼貌地要求用户提供仓库链接或 README 内容。
 
-Useful inputs include:
+## 分析维度
 
-- GitHub URL
-- Local repository folder
-- README content
-- User's operating system
-- User's goal
-- Error message
-- Whether the user wants to learn, run, modify, or install the project
+应围绕以下维度对 GitHub 仓库项目进行拆解和分析：
+- 项目的核心用途
+- 它的目标用户群体
+- 它的主要功能特征
+- 仓库的活跃度与新鲜度（最近提交时间）
+- README 说明书的完整度
+- 具体的安装与运行步骤
+- 运行所需的依赖环境
+- 目录结构拆解
+- 初学者上手难度评估
+- 潜在的风险与安全警示
+- 开源许可协议与使用限制
+- 推荐发给 Agent 的 Prompt 提问词
+- 下一步学习建议
 
-If repository content is unavailable, ask the user to provide the link or README content.
+## 输出结构
 
-## Analysis Dimensions
-
-Analyze the repository across these dimensions:
-
-- Project purpose
-- Target users
-- Main features
-- Repository freshness
-- README completeness
-- Install and run steps
-- Required environment
-- Project structure
-- Beginner difficulty
-- Risks and warnings
-- License and usage constraints
-- Recommended Agent Prompt
-- Next learning step
-
-## Output Structure
-
-Use this structure unless the user asks for another format:
+除非用户另有要求，否则请使用以下结构：
 
 ```markdown
 # GitHub 项目新手解读
@@ -96,11 +92,11 @@ Use this structure unless the user asks for another format:
 
 ## 如何下载这个项目
 
-解释 Download ZIP、Clone、Release 的适用情况。
+解释 Download ZIP、Clone、Release 的适用情况与具体操作。
 
 ## 如何运行或使用
 
-不要跳步。说明环境、依赖、命令和成功标志。
+不要跳步。详细说明依赖环境、安装命令、启动命令和成功标志。
 
 ## 项目目录怎么理解
 
@@ -114,21 +110,18 @@ Use this structure unless the user asks for another format:
 ## 下一步建议
 ```
 
-## Repository Structure Explanation
+## 目录结构小白化转换规则
 
-When explaining files and folders, use beginner language.
+在向初学者解释仓库中的文件夹和文件时，应使用大白话：
+- `README.md`：解释为“项目说明书，通常告诉你怎么安装、怎么运行、这个项目能做什么”。
+- `package.json`：解释为“Node.js 项目的配置文件，里面通常写着项目需要的所有依赖包以及可以直接运行的命令”。
+- `requirements.txt`：解释为“Python 项目需要安装的辅助工具包列表”。
+- `src/`：解释为“主要源代码目录，很多核心功能的代码都会放在这里”。
+- `.env.example`：解释为“环境变量示例配置文件，通常用来告诉你需要在本地配置哪些密钥或参数，使用时需要复制一份并重命名为 `.env`”。
 
-Examples:
+## Agent 提问词模板
 
-- `README.md`: “项目说明书，通常告诉你怎么安装、怎么运行、这个项目能做什么。”
-- `package.json`: “Node.js 项目的配置文件，里面通常写着依赖和可运行命令。”
-- `requirements.txt`: “Python 项目需要安装的工具包列表。”
-- `src/`: “主要源代码目录，很多功能代码会放在这里。”
-- `.env.example`: “环境变量示例文件，通常用来告诉你需要配置哪些密钥或参数。”
-
-## Agent Prompt Templates
-
-When useful, provide prompts like:
+在分析报告中，提供以下可供用户直接复制发给 AI 的 Prompt：
 
 ```text
 请你阅读这个项目的 README 和目录结构，用新手能理解的语言告诉我：
@@ -148,23 +141,22 @@ When useful, provide prompts like:
 5. 修改前需要我确认的问题
 ```
 
-## Quality Standards
+## 质量标准
 
-Before finalizing, check:
+在输出前，对照检查：
+- 用户是否无需阅读冗长的英文 README，就能对仓库的用处一目了然。
+- 部署步骤是否详尽，无任何“跳步”或“默认已知”的省略。
+- 风险警示是否结合了该仓库的具体代码，杜绝套话。
+- 所有的命令在使用前均配有大白话作用解释。
+- 凡是未经验证的言论，均已标注 `[待确认]`。
+- 最终的推荐决策必须务实：是推荐学习、直接运行、果断避坑，还是需要补充其他信息。
 
-- The user can understand what the repository does without reading the full README.
-- Setup steps are not oversimplified.
-- Risk reminders are specific, not generic.
-- Commands are explained before use.
-- Any unverified claims are marked `[待确认]`.
-- The final recommendation is practical: learn, run, avoid, or ask for more information.
-
-## Example Request
+## 示例请求
 
 ```text
 请使用 github-project-reader-skill，分析这个 GitHub 仓库是否适合 AI 初学者学习。
 ```
 
-## Example Output Style
+## 示例输出风格
 
-Use plain Chinese for `Agent 学习地图` content unless the user requests another language. The tone should be patient, concrete, and protective of beginner users.
+在 `Agent 学习地图` 项目中，除非用户特别要求，否则应默认输出通俗易懂的简体中文。语气应耐心、细致，并对初学者的操作安全起到保护作用。
