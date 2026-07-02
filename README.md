@@ -12,13 +12,13 @@
 - 新手是否能按 SOP 完成 GitHub 项目下载和 Cursor 打开流程。
 - Agent Skills 是否能稳定生成统一风格的教程、SOP 和项目解读内容。
 
-## 在线原型
+## 在线体验与原型
 
-当前原型是一个静态 HTML 页面，可以直接用浏览器打开：
+本项目已通过 GitHub Pages 开启在线体验。您可以在电脑或手机浏览器中直接点击打开交互式原型：
 
-```text
-prototype/index.html
-```
+👉 **[在线直达链接](https://lubiny0601-spec.github.io/agent-learning-map/)**
+
+若需本地查看，也可以直接用浏览器打开项目中的：`prototype/index.html`。
 
 原型包含：
 
@@ -163,14 +163,14 @@ prototype/index.html
 
 ## 下一步计划
 
-建议下一批内容先补齐：
+建议下一批内容继续补齐：
 
-- Codex 新手学习页
-- Claude Code 新手学习页
-- Antigravity 新手学习页
-- Skill 导入 Agent SOP
-- API Key 配置 SOP
-- 让 Agent 读懂项目结构 SOP
+- [x] Codex 新手学习页
+- [x] Claude Code 新手学习页
+- [ ] Antigravity 新手学习页
+- [ ] Skill 导入 Agent SOP
+- [ ] API Key 配置 SOP
+- [ ] 让 Agent 读懂项目结构 SOP
 
 建议下一批 Skill 增加：
 
