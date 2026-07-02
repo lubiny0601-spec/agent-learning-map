@@ -1,0 +1,11 @@
+{
+  "name": "agent-learning-map",
+  "version": "1.0.0",
+  "description": "Agent 学习地图静态原型与内容构建系统",
+  "main": "scripts/build.js",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "dependencies": {}
+}
