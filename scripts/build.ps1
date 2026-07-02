@@ -22,6 +22,7 @@ $fileMap = @{
     "trae" = "content/tool-pages/trae-guide.md"
     "codex" = "content/tool-pages/codex-guide.md"
     "workbuddy" = "content/tool-pages/workbuddy-guide.md"
+    "ai_prd_guide" = "content/beginner-guides/ai-prd-guide.md"
 }
 
 $NL = [char]10

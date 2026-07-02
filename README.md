@@ -43,7 +43,8 @@ agent-learning-map/
 │   ├── beginner-guides/
 │   │   ├── ai-glossary.md
 │   │   ├── gemini-sop.md
-│   │   └── notebooklm-sop.md
+│   │   ├── notebooklm-sop.md
+│   │   └── ai-prd-guide.md
 │   ├── ai-applications/
 │   │   ├── ai-poster-guide.md
 │   │   ├── ai-ppt-guide.md
@@ -74,13 +75,14 @@ agent-learning-map/
 
 ## 内容样稿
 
-当前已包含 16 篇内容：
+当前已包含 17 篇内容：
 
 | 内容 | 文件位置 | 用途 |
 |---|---|---|
 | AI 核心名词大白话手册 | `content/beginner-guides/ai-glossary.md` | 新手词汇名词解释 |
 | Gemini 医药实战 SOP | `content/beginner-guides/gemini-sop.md` | 网页端 AI 实战使用指南 |
 | NotebookLM 全能工作流 SOP | `content/beginner-guides/notebooklm-sop.md` | 文献阅读与工作流（测验/PPT/海报） |
+| AI 协同写 PRD 实战指南 | `content/beginner-guides/ai-prd-guide.md` | 产品思维与六轮对话写 PRD 实操指南 |
 | AI 制作海报指南 | `content/ai-applications/ai-poster-guide.md` | 医药疾病宣传海报制作 SOP |
 | AI 制作 PPT 指南 | `content/ai-applications/ai-ppt-guide.md` | 学术科室会 PPT 自动生成 SOP |
 | AI 制作视频指南 | `content/ai-applications/ai-video-guide.md` | 患教与内训短视频制作 SOP |
