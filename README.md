@@ -67,7 +67,17 @@ agent-learning-map/
 │   │   └── SKILL.md
 │   ├── tool-research-skill/
 │   │   └── SKILL.md
-│   └── github-project-reader-skill/
+│   ├── github-project-reader-skill/
+│   │   └── SKILL.md
+│   ├── mcp-helper-skill/
+│   │   └── SKILL.md
+│   ├── prompt-optimizer-skill/
+│   │   └── SKILL.md
+│   ├── error-troubleshooter-skill/
+│   │   └── SKILL.md
+│   ├── risk-safety-review-skill/
+│   │   └── SKILL.md
+│   └── prompt-template-skill/
 │       └── SKILL.md
 └── docs/
     └── skill-examples/
@@ -99,7 +109,7 @@ agent-learning-map/
 
 ## Agent Skills
 
-当前已包含 6 个 Skill：
+当前已包含 8 个 Skill：
 
 | Skill | 文件位置 | 作用 |
 |---|---|---|
@@ -109,6 +119,8 @@ agent-learning-map/
 | `mcp-helper-skill` | `skills/mcp-helper-skill/SKILL.md` | 指导 Agent 编写适合新手的 MCP 服务器安装与配置指南 |
 | `prompt-optimizer-skill` | `skills/prompt-optimizer-skill/SKILL.md` | 将初学者模糊的指令转化为结构清晰、逻辑严密的高质量 AI Prompt |
 | `error-troubleshooter-skill` | `skills/error-troubleshooter-skill/SKILL.md` | 分析新手的运行报错，提供平民化原理解释和安全的排错指令 |
+| `risk-safety-review-skill` | `skills/risk-safety-review-skill/SKILL.md` | 排查代码、指令或工具，规避合规、扣费与安全泄露风险 |
+| `prompt-template-skill` | `skills/prompt-template-skill/SKILL.md` | 根据具体业务或学术任务，自动定制符合 CO-STAR 结构的高质量 Prompt |
 
 这些 Skill 本质上是给 Agent 使用的能力说明文件。它们不是传统软件代码，但可以被支持 Skill 的 Agent 读取，用来指导 Agent 按统一标准生成内容。
 
