@@ -4,8 +4,8 @@ const ASSETS_TO_CACHE = [
   './index.html',
   './manifest.json',
   './_shared/share-cover.jpg',
-  './_shared/icon-192.jpg',
-  './_shared/icon-512.jpg',
+  './_shared/icon-192.png',
+  './_shared/icon-512.png',
   './_shared/fonts/InstrumentSans-Regular.ttf',
   './_shared/fonts/InstrumentSans-Bold.ttf',
   './_shared/fonts/JetBrainsMono-Regular.ttf'
