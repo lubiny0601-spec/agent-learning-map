@@ -35,8 +35,14 @@ $CRLF = [char]13 + [char]10
 function Parse-Inline ($text) {
     # Escape HTML characters first
     $escaped = $text -replace '&', '&amp;' -replace '<', '&lt;' -replace '>', '&gt;'
+    # Restore valid <br> tags
+    $escaped = $escaped -replace '&lt;br&gt;', '<br>'
     # Replace backticks with <code>
     $escaped = [regex]::Replace($escaped, '`([^`]+)`', '<code>$1</code>')
+    # Replace **bold** with <strong>
+    $escaped = [regex]::Replace($escaped, '\*\*([^*]+)\*\*', '<strong>$1</strong>')
+    # Replace [text](url) with <a href="url" target="_blank">text</a>
+    $escaped = [regex]::Replace($escaped, '\[([^\]]+)\]\(([^)]+)\)', '<a href="$2" target="_blank">$1</a>')
     return $escaped
 }
 
@@ -92,7 +98,11 @@ function Convert-MarkdownToHtml ($mdContent) {
                 $html += "<div class='table-wrap'><table>" + $NL
                 $isHeader = $true
                 foreach ($row in $tableRows) {
-                    $cells = ($row -split '\|') | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
+                    $rawCells = $row -split '\|'
+                    if ($rawCells.Length -le 2) {
+                        continue
+                    }
+                    $cells = $rawCells[1..($rawCells.Length-2)] | ForEach-Object { $_.Trim() }
                     if ($row -match '\-\-\-') {
                         continue
                     }

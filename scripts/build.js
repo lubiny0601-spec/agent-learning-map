@@ -80,12 +80,19 @@ function mdToHtml(md) {
   };
 
   const parseInline = (text) => {
+    // Escape HTML characters first to avoid browser parsing problems
+    let escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    // Restore valid <br> tags
+    escaped = escaped.replace(/&lt;br&gt;/gi, '<br>');
     // Handle inline code: `code`
-    text = text.replace(/`([^`]+)`/g, (match, code) => {
-      const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      return `<code>${escaped}</code>`;
+    escaped = escaped.replace(/`([^`]+)`/g, (match, code) => {
+      return `<code>${code}</code>`;
     });
-    return text;
+    // Handle bold: **text**
+    escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // Handle links: [text](url)
+    escaped = escaped.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    return escaped;
   };
 
   for (let i = 0; i < lines.length; i++) {
