@@ -10,7 +10,25 @@ const fileMap = {
   github_project_reader: 'skills/github-project-reader-skill/SKILL.md',
   mcp_helper: 'skills/mcp-helper-skill/SKILL.md',
   prompt_optimizer: 'skills/prompt-optimizer-skill/SKILL.md',
-  error_troubleshooter: 'skills/error-troubleshooter-skill/SKILL.md'
+  error_troubleshooter: 'skills/error-troubleshooter-skill/SKILL.md',
+  ai_beginner_101: 'content/beginner-guides/ai-glossary.md',
+  gemini_sop: 'content/beginner-guides/gemini-sop.md',
+  notebooklm_sop: 'content/beginner-guides/notebooklm-sop.md',
+  ai_poster: 'content/ai-applications/ai-poster-guide.md',
+  ai_ppt: 'content/ai-applications/ai-ppt-guide.md',
+  ai_video: 'content/ai-applications/ai-video-guide.md',
+  ai_dashboard: 'content/ai-applications/ai-dashboard-guide.md',
+  ai_research: 'content/ai-applications/ai-research-guide.md',
+  ai_market_analysis: 'content/ai-applications/ai-market-analysis-guide.md',
+  claude_code: 'content/tool-pages/claude-code-guide.md',
+  trae: 'content/tool-pages/trae-guide.md',
+  codex: 'content/tool-pages/codex-guide.md',
+  workbuddy: 'content/tool-pages/workbuddy-guide.md',
+  ai_prd_guide: 'content/beginner-guides/ai-prd-guide.md',
+  risk_safety_review: 'skills/risk-safety-review-skill/SKILL.md',
+  prompt_template_skill: 'skills/prompt-template-skill/SKILL.md',
+  static_hosting_guide: 'content/deployment/static-hosting-guide.md',
+  wechat_sharing_guide: 'content/deployment/wechat-sharing-guide.md'
 };
 
 function mdToHtml(md) {

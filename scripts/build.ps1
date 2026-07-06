@@ -25,6 +25,8 @@ $fileMap = @{
     "ai_prd_guide" = "content/beginner-guides/ai-prd-guide.md"
     "risk_safety_review" = "skills/risk-safety-review-skill/SKILL.md"
     "prompt_template_skill" = "skills/prompt-template-skill/SKILL.md"
+    "static_hosting_guide" = "content/deployment/static-hosting-guide.md"
+    "wechat_sharing_guide" = "content/deployment/wechat-sharing-guide.md"
 }
 
 $NL = [char]10

@@ -32,7 +32,7 @@
 
 ### 🚨 故障原因 A：Jekyll 编译器冲突导致编译失败
 * **故障机制**：GitHub Pages 默认使用 Jekyll 静态站生成器来编译整个仓库。如果仓库中有大量以 `---` 开头的文件（如我们的 Markdown 教程 frontmatter）或包含双大括号 `{{ ... }}`（Liquid 模板引擎的关键字）的文本，Jekyll 在编译时就会抛出致命错误，直接导致生成好的 `index.html` 无法发布，进而引发全站 404。
-* **解决方案**：在仓库根目录下新建一个名为 **`.nojekyll`** 的空文件（或写入简单注释）。该文件是 GitHub Pages 的官方白名单指令，会通知服务器**完全跳过 Jekyll 编译流程**，直接将文件按原样作为静态网站输出，从而根治 404 问题。
+* **解决方案**：在仓库根目录下新建一个名为 **`.nojekyll`** 的空文件（或写入简单注释）。该文件是 GitHub Pages 的官方 white-list 指令，会通知服务器**完全跳过 Jekyll 编译流程**，直接将文件按原样作为静态网站输出，从而根治 404 问题。
 
 ### 🚨 故障原因 B：GitHub Pages CDN 后台部署死锁 (Stuck Deployment)
 * **故障机制**：当之前的某次编译失败时，GitHub Pages CDN 节点有时会卡在“进行中”状态（In Progress）。此时如果再次提交代码或修复文件，新构建的部署任务（Deploy job）在向服务器请求发布时，会报 `Deployment request failed due to in progress deployment. Please cancel first...` 的 API 错误并遭到拒绝。
@@ -54,7 +54,7 @@
 ---
 
 ## 🛠️ 本次所修改的文件列表 (File Diffs)
-1. **[.nojekyll](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/.nojekyll) [NEW]**：置于根目录，彻底关闭 Jekyll 限制。
-2. **[prototype/_shared/share-cover.jpg](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/prototype/_shared/share-cover.jpg) [NEW]**：微信分享卡片高拟真预览图片。
-3. **[index.html](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/index.html) [MODIFY]**：注入 `og:title` / `og:description` / `og:image` 标签，并在 `<body>` 起始处添加隐藏首图用于微信嗅探。
-4. **[prototype/index.html](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/prototype/index.html) [MODIFY]**：同步注入 H5 页的分享元数据及隐藏嗅探图片。
+1. **[.nojekyll](../../.nojekyll) [NEW]**：置于根目录，彻底关闭 Jekyll 限制。
+2. **[prototype/_shared/share-cover.jpg](../../prototype/_shared/share-cover.jpg) [NEW]**：微信分享卡片高拟真预览图片。
+3. **[index.html](../../index.html) [MODIFY]**：注入 `og:title` / `og:description` / `og:image` 标签，并在 `<body>` 起始处添加隐藏首图用于微信嗅探。
+4. **[prototype/index.html](../../prototype/index.html) [MODIFY]**：同步注入 H5 页的分享元数据及隐藏嗅探图片。
