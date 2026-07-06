@@ -6,7 +6,7 @@
   <meta name="description" content="面向 AI 初学者的 Agent 工具学习地图，包含工具教程、GitHub SOP、Prompt 模板和可复用 Agent Skills。">
   <!-- WeChat Share Meta Tags -->
   <meta property="og:title" content="Agent 学习地图">
-  <meta property="og:description" content="面向 AI 初学者的 Agent 工具学习地图，包含工具教程、GitHub SOP、Prompt 模板 and 可复用 Agent Skills。">
+  <meta property="og:description" content="面向 AI 初学者的 Agent 工具学习地图，包含工具教程、GitHub SOP、Prompt 模板和可复用 Agent Skills。">
   <meta property="og:image" content="https://lubiny0601-spec.github.io/agent-learning-map/prototype/_shared/share-cover.jpg">
   <meta property="og:type" content="website">
   <title>Agent 学习地图 · 交互原型</title>
@@ -1099,6 +1099,26 @@
         </div>
       </section>
 
+      <!-- Section: PRD Special -->
+      <section class="section" id="prd">
+        <div class="section-head">
+          <div>
+            <h2>PRD 协同撰写专题 (进阶)</h2>
+            <p>专为有具体工具开发构想的业务团队设计。学习产品思维，将模糊想法转化为 AI 可开发需求，并生成符合 Medical & Legal 合规的产品需求文档。</p>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="card" style="grid-column: span 3; min-height: 180px;" data-key="ai_prd_guide" onclick="openReader('ai_prd_guide')">
+            <div>
+              <div class="kind">专题课 · 45分钟</div>
+              <h3>AI 协同写 PRD 全能实战指南</h3>
+              <p>包含两部分：第一部分讲解从业务想法到 AI 可开发需求的转化逻辑与数据匹配新范式；第二部分提供字字未变的 6 轮人机对话实操 workbook，手把手生成合规 PRD 文档。</p>
+            </div>
+            <div class="card-foot"><span>理论与实操双轨专题</span><span class="arrow">→</span></div>
+          </article>
+        </div>
+      </section>
+
       <!-- Section: Deployment & Sharing -->
       <section class="section" id="deployment">
         <div class="section-head">
@@ -1123,26 +1143,6 @@
               <p>配置微信 og 标签与隐藏预览图，诊断 Jekyll 编译器冲突及 GitHub Pages CDN 部署死锁故障。</p>
             </div>
             <div class="card-foot"><span>微信优化与404诊断</span><span class="arrow">→</span></div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Section: PRD Special -->
-      <section class="section" id="prd">
-        <div class="section-head">
-          <div>
-            <h2>PRD 协同撰写专题 (进阶)</h2>
-            <p>专为有具体工具开发构想的业务团队设计。学习产品思维，将模糊想法转化为 AI 可开发需求，并生成符合 Medical & Legal 合规的产品需求文档。</p>
-          </div>
-        </div>
-        <div class="grid">
-          <article class="card" style="grid-column: span 3; min-height: 180px;" data-key="ai_prd_guide" onclick="openReader('ai_prd_guide')">
-            <div>
-              <div class="kind">专题课 · 45分钟</div>
-              <h3>AI 协同写 PRD 全能实战指南</h3>
-              <p>包含两部分：第一部分讲解从业务想法到 AI 可开发需求的转化逻辑与数据匹配新范式；第二部分提供字字未变的 6 轮人机对话实操 workbook，手把手生成合规 PRD 文档。</p>
-            </div>
-            <div class="card-foot"><span>理论与实操双轨专题</span><span class="arrow">→</span></div>
           </article>
         </div>
       </section>
@@ -1568,7 +1568,7 @@
       "3. Netlify 部署指南",
       "4. Cloudflare Pages 部署指南"
     ],
-    "html": "<p>「Agent 学习地图」是一个完全由 HTML、CSS 和 JavaScript 组成的纯静态前端项目。它不需要复杂的服务器端环境，可以直接托管在各大免费的静态网页托管平台。</p>\n<p>本指南提供了在 **GitHub Pages**、**Vercel**、**Netlify** 和 **Cloudflare Pages** 这四大主流托管平台上的详细部署步骤与避坑指南。</p>\n<p>---</p>\n<h2>目录</h2>\n<ol>\n  <li>[GitHub Pages 部署指南](#1-github-pages-部署指南)</li>\n  <li>[Vercel 部署指南](#2-vercel-部署指南)</li>\n  <li>[Netlify 部署指南](#3-netlify-部署指南)</li>\n  <li>[Cloudflare Pages 部署指南](#4-cloudflare-pages-部署指南)</li>\n</ol>\n<p>---</p>\n<h2>1. GitHub Pages 部署指南</h2>\n<h3>适用场景</h3>\n<p>代码已托管在 GitHub，希望直接使用 GitHub 提供的免费二级域名和自动化构建流水线。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**进入设置**：登录 GitHub，进入您的 <code>agent-learning-map</code> 仓库，点击页面右上角的 **<code>Settings</code>**（设置）按钮。</li>\n  <li>**选择 Pages 服务**：在左侧导航栏中，找到 **<code>Code and automation</code>** 区域，点击 **<code>Pages</code>**。</li>\n  <li>**配置构建分支**：</li>\n</ol>\n<p>* 在 **<code>Build and deployment</code>** 选项下的 **<code>Source</code>** 下拉菜单中，选择 **<code>Deploy from a branch</code>**。</p>\n<p>* 在其下方的 **<code>Branch</code>** 选择框中，将分支从 <code>None</code> 改为您的主分支（通常为 **<code>main</code>** 或 **<code>master</code>**）。</p>\n<p>* 目录选择框保持默认的 **<code>/(root)</code>** 目录。</p>\n<p>* 点击 **<code>Save</code>** 保存配置。</p>\n<ol>\n  <li>**监控构建状态**：</li>\n</ol>\n<p>* 保存后，点击仓库顶部的 **<code>Actions</code>** 选项卡。</p>\n<p>* 您会看到一个名为 <code>pages-build-deployment</code> 的工作流已自动触发。</p>\n<p>* 等待 1-2 分钟，当工作流图标变成绿色对勾（Success）时，即表示编译和部署完成。</p>\n<ol>\n  <li>**获取在线链接**：</li>\n</ol>\n<p>* 再次回到 **<code>Settings</code> -> <code>Pages</code>** 页面。</p>\n<p>* 页面顶部会显示您的专属在线网址，格式通常为：<code>https://&lt;您的GitHub用户名&gt;.github.io/&lt;仓库名称&gt;/</code>。</p>\n<h3>🚨 避坑要点</h3>\n<ul>\n  <li>**<code>.nojekyll</code> 编译冲突**：GitHub Pages 默认会运行 Jekyll 静态网站生成器。由于项目中存在以 <code>---</code> 开头的 Markdown 文件或包含 <code>{{ ... }}</code> 的代码片段，这会导致 Jekyll 编译失败（出现 404 错误）。**解决方案**：在仓库根目录添加一个名为 <code>.nojekyll</code> 的空文件以彻底关闭 Jekyll 编译。</li>\n  <li>**资源路径问题**：GitHub Pages 默认的 URL 是带有项目名称的二级目录（例如 <code>/agent-learning-map/</code>）。请在引用资源（CSS、JS、图片）时，使用相对路径（如 <code>./style.css</code> 或 <code>style.css</code>），避免使用绝对根路径（如 <code>/style.css</code>），否则会导致资源加载失败。</li>\n</ul>\n<p>---</p>\n<h2>2. Vercel 部署指南</h2>\n<h3>适用场景</h3>\n<p>希望在国内拥有更快的访问速度、极其丝滑的自动化部署体验，以及支持分支预览等高级功能。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**账号登录**：访问 [Vercel 官网 (vercel.com)](https://vercel.com/)，点击登录并选择使用 **GitHub 账号** 进行绑定授权。</li>\n  <li>**导入项目**：</li>\n</ol>\n<p>* 进入 Vercel 控制台（Dashboard），点击右上角的 **<code>Add New...</code>**，选择 **<code>Project</code>**。</p>\n<p>* 在 Git 仓库导入列表中找到您的 <code>agent-learning-map</code> 仓库，点击 **<code>Import</code>**。</p>\n<ol>\n  <li>**配置部署参数**：</li>\n</ol>\n<p>* **Framework Preset**（框架预设）：由于项目是纯静态的，请选择 **<code>Other</code>**。</p>\n<p>* **Root Directory**（根目录）：保持默认的 **<code>./</code>** 不变。</p>\n<p>* **Build and Output Settings**（构建和输出设置）：不需要进行任何修改，保持所有选项关闭即可。</p>\n<ol>\n  <li>**触发部署**：</li>\n</ol>\n<p>* 点击页面下方的 **<code>Deploy</code>** 按钮。</p>\n<p>* Vercel 会在 10-20 秒内自动拉取代码并部署完毕。</p>\n<p>* 部署完成后，系统会生成一个免费的 <code>*.vercel.app</code> 域名供您在线访问。</p>\n<ol>\n  <li>**绑定自定义域名**（可选）：</li>\n</ol>\n<p>* 在项目详情页点击 **<code>Settings</code> -> <code>Domains</code>**。</p>\n<p>* 输入您的独立域名，并按照指示在您的 DNS 服务商处添加对应的 A 记录或 CNAME 记录即可。</p>\n<h3>🚨 避坑要点</h3>\n<ul>\n  <li>Vercel 对纯静态 HTML 文件的托管非常友好。每次您向 GitHub 的 <code>main</code> 分支提交（git push）代码时，Vercel 都会自动触发重新部署，无需手动干预。</li>\n</ul>\n<p>---</p>\n<h2>3. Netlify 部署指南</h2>\n<h3>适用场景</h3>\n<p>简单易用，国内访问速度稳定，提供强大的重定向配置（Redirects）和表单收集等开箱即用功能。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**登录注册**：访问 [Netlify 官网 (netlify.com)](https://www.netlify.com/)，选择用 **GitHub** 账户快捷注册/登录。</li>\n  <li>**新建站点**：</li>\n</ol>\n<p>* 在控制台主页点击 **<code>Add new site</code>**，选择 **<code>Import an existing project</code>**。</p>\n<p>* 在底部的 Git 提供商中选择 **<code>GitHub</code>**，授权并找到 <code>agent-learning-map</code> 仓库。</p>\n<ol>\n  <li>**填写构建配置**：</li>\n</ol>\n<p>* **Branch to deploy**：选择部署主分支 **<code>main</code>**。</p>\n<p>* **Base directory**：留空。</p>\n<p>* **Build command**（构建命令）：留空。</p>\n<p>* **Publish directory**（发布目录）：输入 **<code>.</code>**（代表将根目录下的 HTML 部署出去）。</p>\n<ol>\n  <li>**一键部署**：</li>\n</ol>\n<p>* 点击 **<code>Deploy site</code>** 按钮。</p>\n<p>* Netlify 会自动初始化构建。部署完成后，您会在项目头部看到一个类似 <code>https://xxxx.netlify.app</code> 的随机网址，点击即可访问。</p>\n<ol>\n  <li>**修改域名**（可选）：</li>\n</ol>\n<p>* 在 Site settings -> Domain management 下可以修改 Netlify 提供的随机子域名，或者绑定您自有的独立域名。</p>\n<p>---</p>\n<h2>4. Cloudflare Pages 部署指南</h2>\n<h3>适用场景</h3>\n<p>依托 Cloudflare 全球边缘网络，国内访问极其迅速且稳定，免费额度几乎无上限。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**登录控制台**：登录 [Cloudflare 控制台](https://dash.cloudflare.com/)，在左侧导航栏中点击 **<code>Workers &amp; Pages</code>**。</li>\n  <li>**创建 Pages 应用**：</li>\n</ol>\n<p>* 点击 **<code>Create application</code>** 按钮，切换到 **<code>Pages</code>** 标签页。</p>\n<p>* 点击 **<code>Connect to Git</code>** 按钮。</p>\n<ol>\n  <li>**关联仓库**：</li>\n</ol>\n<p>* 授权 Cloudflare 访问您的 GitHub，并从列表中选择 <code>agent-learning-map</code> 仓库，点击 **<code>Begin setup</code>**。</p>\n<ol>\n  <li>**设置构建选项**：</li>\n</ol>\n<p>* **Project name**（项目名称）：保持默认或自定义。</p>\n<p>* **Production branch**（生产分支）：选择 **<code>main</code>**。</p>\n<p>* **Framework preset**（框架预设）：选择 **<code>None</code>**（纯静态 HTML 模式）。</p>\n<p>* **Build command**（构建命令）：留空。</p>\n<p>* **Build output directory**（输出目录）：留空（表示部署根目录）。</p>\n<ol>\n  <li>**部署发布**：</li>\n</ol>\n<p>* 点击 **<code>Save and Deploy</code>**。</p>\n<p>* Cloudflare 将在 30 秒内完成全球节点的同步与分发，并为您分配一个 <code>*.pages.dev</code> 域名。</p>\n<h3>🚨 避坑要点</h3>\n<ul>\n  <li>Cloudflare Pages 提供了极快的全球部署和自带的免费 SSL 证书，是静态项目部署的最佳选择之一。如果国内访问遇到卡顿，可考虑绑定已接入 Cloudflare CDN 的自定义域名。</li>\n</ul>\n"
+    "html": "<p>「Agent 学习地图」是一个完全由 HTML、CSS 和 JavaScript 组成的纯静态前端项目。它不需要复杂的服务器端环境，可以直接托管在各大免费的静态网页托管平台。</p>\n<p>本指南提供了在 **GitHub Pages**、**Vercel**、**Netlify** 和 **Cloudflare Pages** 这四大主流托管平台上的详细部署步骤与避坑指南。</p>\n<p>---</p>\n<h2>目录</h2>\n<ol>\n  <li>[GitHub Pages 部署指南](#1-github-pages-部署指南)</li>\n  <li>[Vercel 部署指南](#2-vercel-部署指南)</li>\n  <li>[Netlify 部署指南](#3-netlify-部署指南)</li>\n  <li>[Cloudflare Pages 部署指南](#4-cloudflare-pages-部署指南)</li>\n</ol>\n<p>---</p>\n<h2>1. GitHub Pages 部署指南</h2>\n<h3>适用场景</h3>\n<p>代码已托管在 GitHub，希望直接使用 GitHub 提供的免费二级域名和自动化构建流水线。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**进入设置**：登录 GitHub，进入您的 <code>agent-learning-map</code> 仓库，点击页面右上角的 **<code>Settings</code>**（设置）按钮。</li>\n  <li>**选择 Pages 服务**：在左侧导航栏中，找到 **<code>Code and automation</code>** 区域，点击 **<code>Pages</code>**。</li>\n  <li>**配置构建分支**：</li>\n</ol>\n<p>* 在 **<code>Build and deployment</code>** 选项下的 **<code>Source</code>** 下拉菜单中，选择 **<code>Deploy from a branch</code>**。</p>\n<p>* 在其下方的 **<code>Branch</code>** 选择框中，将分支从 <code>None</code> 改为您的主分支（通常为 **<code>main</code>** 或 **<code>master</code>**）。</p>\n<p>* 目录选择框保持默认的 **<code>/(root)</code>** 目录。</p>\n<p>* 点击 **<code>Save</code>** 保存配置。</p>\n<ol>\n  <li>**监控构建状态**：</li>\n</ol>\n<p>* 保存后，点击仓库顶部的 **<code>Actions</code>** 选项卡。</p>\n<p>* 您会看到一个名为 <code>pages-build-deployment</code> 的工作流已自动触发。</p>\n<p>* 等待 1-2 分钟，当工作流图标变成绿色对勾（Success）时，即表示编译和部署完成。</p>\n<ol>\n  <li>**获取在线链接**：</li>\n</ol>\n<p>* 再次回到 **<code>Settings</code> -> <code>Pages</code>** 页面。</p>\n<p>* 页面顶部会显示您的专属在线网址，格式通常为：<code>https://[您的GitHub用户名].github.io/[仓库名称]/</code>。</p>\n<h3>🚨 避坑要点</h3>\n<ul>\n  <li>**<code>.nojekyll</code> 编译冲突**：GitHub Pages 默认会运行 Jekyll 静态网站生成器。由于项目中存在以 <code>---</code> 开头的 Markdown 文件或包含 <code>{{ ... }}</code> 的代码片段，这会导致 Jekyll 编译失败（出现 404 错误）。**解决方案**：在仓库根目录添加一个名为 <code>.nojekyll</code> 的空文件以彻底关闭 Jekyll 编译。</li>\n  <li>**资源路径问题**：GitHub Pages 默认的 URL 是带有项目名称的二级目录（例如 <code>/agent-learning-map/</code>）。请在引用资源（CSS、JS、图片）时，使用相对路径（如 <code>./style.css</code> 或 <code>style.css</code>），避免使用绝对根路径（如 <code>/style.css</code>），否则会导致资源加载失败。</li>\n</ul>\n<p>---</p>\n<h2>2. Vercel 部署指南</h2>\n<h3>适用场景</h3>\n<p>希望在国内拥有更快的访问速度、极其丝滑的自动化部署体验，以及支持分支预览等高级功能。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**账号登录**：访问 [Vercel 官网 (vercel.com)](https://vercel.com/)，点击登录并选择使用 **GitHub 账号** 进行绑定授权。</li>\n  <li>**导入项目**：</li>\n</ol>\n<p>* 进入 Vercel 控制台（Dashboard），点击右上角的 **<code>Add New...</code>**，选择 **<code>Project</code>**。</p>\n<p>* 在 Git 仓库导入列表中找到您的 <code>agent-learning-map</code> 仓库，点击 **<code>Import</code>**。</p>\n<ol>\n  <li>**配置部署参数**：</li>\n</ol>\n<p>* **Framework Preset**（框架预设）：由于项目是纯静态的，请选择 **<code>Other</code>**。</p>\n<p>* **Root Directory**（根目录）：保持默认的 **<code>./</code>** 不变。</p>\n<p>* **Build and Output Settings**（构建和输出设置）：不需要进行任何修改，保持所有选项关闭即可。</p>\n<ol>\n  <li>**触发部署**：</li>\n</ol>\n<p>* 点击页面下方的 **<code>Deploy</code>** 按钮。</p>\n<p>* Vercel 会在 10-20 秒内自动拉取代码并部署完毕。</p>\n<p>* 部署完成后，系统会生成一个免费的 <code>*.vercel.app</code> 域名供您在线访问。</p>\n<ol>\n  <li>**绑定自定义域名**（可选）：</li>\n</ol>\n<p>* 在项目详情页点击 **<code>Settings</code> -> <code>Domains</code>**。</p>\n<p>* 输入您的独立域名，并按照指示在您的 DNS 服务商处添加对应的 A 记录或 CNAME 记录即可。</p>\n<h3>🚨 避坑要点</h3>\n<ul>\n  <li>Vercel 对纯静态 HTML 文件的托管非常友好。每次您向 GitHub 的 <code>main</code> 分支提交（git push）代码时，Vercel 都会自动触发重新部署，无需手动干预。</li>\n</ul>\n<p>---</p>\n<h2>3. Netlify 部署指南</h2>\n<h3>适用场景</h3>\n<p>简单易用，国内访问速度稳定，提供强大的重定向配置（Redirects）和表单收集等开箱即用功能。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**登录注册**：访问 [Netlify 官网 (netlify.com)](https://www.netlify.com/)，选择用 **GitHub** 账户快捷注册/登录。</li>\n  <li>**新建站点**：</li>\n</ol>\n<p>* 在控制台主页点击 **<code>Add new site</code>**，选择 **<code>Import an existing project</code>**。</p>\n<p>* 在底部的 Git 提供商中选择 **<code>GitHub</code>**，授权并找到 <code>agent-learning-map</code> 仓库。</p>\n<ol>\n  <li>**填写构建配置**：</li>\n</ol>\n<p>* **Branch to deploy**：选择部署主分支 **<code>main</code>**。</p>\n<p>* **Base directory**：留空。</p>\n<p>* **Build command**（构建命令）：留空。</p>\n<p>* **Publish directory**（发布目录）：输入 **<code>.</code>**（代表将根目录下的 HTML 部署出去）。</p>\n<ol>\n  <li>**一键部署**：</li>\n</ol>\n<p>* 点击 **<code>Deploy site</code>** 按钮。</p>\n<p>* Netlify 会自动初始化构建。部署完成后，您会在项目头部看到一个类似 <code>https://xxxx.netlify.app</code> 的随机网址，点击即可访问。</p>\n<ol>\n  <li>**修改域名**（可选）：</li>\n</ol>\n<p>* 在 Site settings -> Domain management 下可以修改 Netlify 提供的随机子域名，或者绑定您自有的独立域名。</p>\n<p>---</p>\n<h2>4. Cloudflare Pages 部署指南</h2>\n<h3>适用场景</h3>\n<p>依托 Cloudflare 全球边缘网络，国内访问极其迅速且稳定，免费额度几乎无上限。</p>\n<h3>🛠️ 操作步骤</h3>\n<ol>\n  <li>**登录控制台**：登录 [Cloudflare 控制台](https://dash.cloudflare.com/)，在左侧导航栏中点击 **<code>Workers &amp; Pages</code>**。</li>\n  <li>**创建 Pages 应用**：</li>\n</ol>\n<p>* 点击 **<code>Create application</code>** 按钮，切换到 **<code>Pages</code>** 标签页。</p>\n<p>* 点击 **<code>Connect to Git</code>** 按钮。</p>\n<ol>\n  <li>**关联仓库**：</li>\n</ol>\n<p>* 授权 Cloudflare 访问您的 GitHub，并从列表中选择 <code>agent-learning-map</code> 仓库，点击 **<code>Begin setup</code>**。</p>\n<ol>\n  <li>**设置构建选项**：</li>\n</ol>\n<p>* **Project name**（项目名称）：保持默认或自定义。</p>\n<p>* **Production branch**（生产分支）：选择 **<code>main</code>**。</p>\n<p>* **Framework preset**（框架预设）：选择 **<code>None</code>**（纯静态 HTML 模式）。</p>\n<p>* **Build command**（构建命令）：留空。</p>\n<p>* **Build output directory**（输出目录）：留空（表示部署根目录）。</p>\n<ol>\n  <li>**部署发布**：</li>\n</ol>\n<p>* 点击 **<code>Save and Deploy</code>**。</p>\n<p>* Cloudflare 将在 30 秒内完成全球节点的同步与分发，并为您分配一个 <code>*.pages.dev</code> 域名。</p>\n<h3>🚨 避坑要点</h3>\n<ul>\n  <li>Cloudflare Pages 提供了极快的全球部署和自带的免费 SSL 证书，是静态项目部署的最佳选择之一。如果国内访问遇到卡顿，可考虑绑定已接入 Cloudflare CDN 的自定义域名。</li>\n</ul>\n"
   },
   "wechat_sharing_guide": {
     "title": "Agent 学习地图 - 微信分享与部署诊断指南",
