@@ -1,12 +1,14 @@
 const CACHE_NAME = 'agent-map-v1';
 const ASSETS_TO_CACHE = [
+  './',
   './index.html',
   './manifest.json',
   './_shared/share-cover.jpg',
   './_shared/icon-192.jpg',
   './_shared/icon-512.jpg',
   './_shared/fonts/InstrumentSans-Regular.ttf',
-  './_shared/fonts/InstrumentSans-Bold.ttf'
+  './_shared/fonts/InstrumentSans-Bold.ttf',
+  './_shared/fonts/JetBrainsMono-Regular.ttf'
 ];
 
 self.addEventListener('install', (event) => {
@@ -32,6 +34,11 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Bypass caching for non-GET requests to prevent errors
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {

@@ -10,6 +10,13 @@
   <meta property="og:image" content="https://lubiny0601-spec.github.io/agent-learning-map/prototype/_shared/share-cover.jpg">
   <meta property="og:type" content="website">
   <title>Agent 学习地图 · 交互原型</title>
+  <!-- PWA (Application wrapping) Tags -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Agent地图">
+  <link rel="apple-touch-icon" href="./_shared/icon-192.jpg">
   <style>
     @font-face {
       font-family: 'Instrument Sans';
@@ -1962,6 +1969,15 @@ ${rulesText || '无特殊安全规则限制。'}
       onRoleChange();
       updateProgress();
     });
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
   </script>
 </body>
 </html>
