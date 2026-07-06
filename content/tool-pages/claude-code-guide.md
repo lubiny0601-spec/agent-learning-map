@@ -14,7 +14,7 @@ Claude Code 是由 Anthropic 官方推出的**命令行 AI 编程 Agent（智能
 
 ## 不适合谁
 
-* **对命令行极度恐惧的小白**：如果你从未用过终端控制台（如 CMD、PowerShell、Terminal），看到一行行滚动代码就头疼，建议优先使用界面更直观的图形化工具 [Cursor](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/content/tool-pages/cursor-beginner-guide.md) 或 [Trae](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/content/tool-pages/trae-guide.md)。
+* **对命令行极度恐惧的小白**：如果你从未用过终端控制台（如 CMD、PowerShell、Terminal），看到一行行滚动代码就头疼，建议优先使用界面更直观的图形化工具 [Cursor](./cursor-beginner-guide.md) 或 [Trae](./trae-guide.md)。
 
 ---
 
@@ -110,5 +110,5 @@ Claude Code 是由 Anthropic 官方推出的**命令行 AI 编程 Agent（智能
 
 ## 学完后下一步
 
-1. 阅读 [从 GitHub 下载项目并用 Cursor 打开](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/content/sops/github-download-open-with-cursor-sop.md) SOP，开始练习在本地配置标准的开发工作空间。
-2. 学习 [运行报错排查助手](file:///d:/antigravity%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%B6%E4%BD%9C/agent-learning-map/skills/error-troubleshooter-skill/SKILL.md) Skill，在 Claude Code 自动修改代码报错时，学会如何看懂控制台日志。
+1. 阅读 [从 GitHub 下载项目并用 Cursor 打开](../sops/github-download-open-with-cursor-sop.md) SOP，开始练习在本地配置标准的开发工作空间。
+2. 学习 [运行报错排查助手](../../skills/error-troubleshooter-skill/SKILL.md) Skill，在 Claude Code 自动修改代码报错时，学会如何看懂控制台日志。

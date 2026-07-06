@@ -39,6 +39,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Bypass non-HTTP/HTTPS schemes (like chrome-extension://) to prevent fetch crashes
+  if (!event.request.url.startsWith('http') && !event.request.url.startsWith('https')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -46,7 +51,7 @@ self.addEventListener('fetch', (event) => {
         fetch(event.request).then((networkResponse) => {
           if (networkResponse.status === 200) {
             caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, networkResponse);
+              cache.put(event.request, networkResponse.clone());
             });
           }
         }).catch(() => {/* Ignore offline network errors */});
