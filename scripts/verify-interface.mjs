@@ -29,7 +29,14 @@ for (const marker of [
   'function initLearningEntries()',
   'entryLabelByKey',
   'card-action',
-  '.uiux-reference { pointer-events: auto; z-index: 3; }'
+  '.uiux-reference { pointer-events: auto; z-index: 3; }',
+  'initLearningEntries();',
+  '.card:focus-within { border-color: var(--meadow-deep); box-shadow: 0 0 0 3px rgba(23, 63, 42, .45), 0 14px 40px rgba(23, 63, 42, .12); }'
 ]) {
   if (!html.includes(marker)) throw new Error(`Missing entry marker: ${marker}`);
+}
+
+const courseEntryRule = html.match(/\.course-entry\s*\{([\s\S]*?)\n    \}/);
+if (!courseEntryRule?.[1].includes('min-height: 44px;')) {
+  throw new Error('Course entry no longer has a 44px minimum target');
 }
