@@ -40,3 +40,15 @@ const courseEntryRule = html.match(/\.course-entry\s*\{([\s\S]*?)\n    \}/);
 if (!courseEntryRule?.[1].includes('min-height: 44px;')) {
   throw new Error('Course entry no longer has a 44px minimum target');
 }
+
+for (const marker of [
+  "--font: 'Instrument Sans', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC'",
+  'font-synthesis: none',
+  'line-height: 1.72',
+  'font-size: clamp(2.35rem, 5.6vw, 4.4rem)',
+  'font-size: clamp(1.8rem, 3.8vw, 3.2rem)',
+  'line-height: 1.85',
+  'font-size: clamp(2.2rem, 11vw, 3.15rem)'
+]) {
+  if (!html.includes(marker)) throw new Error(`Missing typography marker: ${marker}`);
+}
