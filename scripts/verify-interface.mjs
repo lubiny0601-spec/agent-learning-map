@@ -28,7 +28,8 @@ for (const marker of [
   "entry.className = 'course-entry'",
   'function initLearningEntries()',
   'entryLabelByKey',
-  'card-action'
+  'card-action',
+  '.uiux-reference { pointer-events: auto; z-index: 3; }'
 ]) {
   if (!html.includes(marker)) throw new Error(`Missing entry marker: ${marker}`);
 }
