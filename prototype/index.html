@@ -1214,6 +1214,85 @@
       .figma-surface { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
       .card { border-radius: 8px; }
     }
+
+    :root {
+      --meadow-deep: #173f2a;
+      --meadow-mid: #55785d;
+      --meadow-mist: #dfe8d9;
+      --paper-warm: #fbfaf3;
+      --paper-soft: #f3f4ea;
+      --flower-lilac: #c8a7dc;
+    }
+
+    body {
+      background-color: var(--meadow-mist);
+      background-image:
+        linear-gradient(180deg, rgba(20, 55, 36, .18), rgba(223, 232, 217, .74) 48%, rgba(244, 243, 232, .94)),
+        url('./assets/spring-learning-meadow.png');
+      background-position: center top;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .topbar {
+      background: var(--paper-warm);
+      border-bottom-color: rgba(23, 63, 42, .18);
+    }
+
+    .collage-hero {
+      min-height: 680px;
+      margin-bottom: 96px;
+      background:
+        linear-gradient(90deg, rgba(12, 43, 27, .2), rgba(12, 43, 27, .02)),
+        url('./assets/spring-learning-meadow.png') center / cover;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .collage-hero .hero-main,
+    .collage-hero .hero-side,
+    .section,
+    .reader {
+      background: var(--paper-warm);
+      border-color: rgba(23, 63, 42, .16);
+    }
+
+    .figma-surface {
+      background: var(--paper-warm);
+      border: 1px solid rgba(23, 63, 42, .14);
+    }
+
+    .figma-surface .section-head::before {
+      content: '';
+      display: block;
+      width: 64px;
+      height: 8px;
+      margin-bottom: 16px;
+      border-radius: 999px;
+      background: var(--section-accent, var(--meadow-mid));
+    }
+
+    .surface-lime { --section-accent: #8cac63; }
+    .surface-lilac { --section-accent: var(--flower-lilac); }
+    .surface-cream { --section-accent: #d8bd79; }
+    .surface-mint { --section-accent: #73a886; }
+    .surface-coral { --section-accent: #d89479; }
+    .surface-navy { --section-accent: #75689f; color: var(--ink); }
+    .surface-navy h2,
+    .surface-navy h3,
+    .surface-navy p,
+    .surface-navy .kind,
+    .surface-navy .card-foot { color: var(--ink); }
+    .surface-navy .card { background: var(--paper-soft); border-color: rgba(23, 63, 42, .16); }
+
+    @media (max-width: 768px) {
+      body { background-attachment: scroll; }
+      .collage-hero { min-height: 620px; border-radius: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body { background-attachment: scroll; }
+    }
   </style>
 </head>
 <body>

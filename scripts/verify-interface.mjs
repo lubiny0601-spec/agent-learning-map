@@ -13,3 +13,12 @@ const uniqueKeys = new Set(courseCards.map((match) => match[1]));
 for (const key of uniqueKeys) {
   if (!html.includes(`"${key}": {`)) throw new Error(`Card has no compiled content: ${key}`);
 }
+
+const backgroundPath = path.resolve('prototype/assets/spring-learning-meadow.png');
+if (!fs.existsSync(backgroundPath) || fs.statSync(backgroundPath).size < 50_000) {
+  throw new Error('Missing or undersized spring background asset');
+}
+
+for (const marker of ['spring-learning-meadow.png', '--meadow-deep:', '--paper-warm:']) {
+  if (!html.includes(marker)) throw new Error(`Missing background marker: ${marker}`);
+}
