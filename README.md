@@ -60,8 +60,13 @@ agent-learning-map/
 │   │   └── workbuddy-guide.md
 │   ├── sops/
 │   │   └── github-download-open-with-cursor-sop.md
-│   └── github-guides/
-│       └── github-repo-beginner-analysis-template.md
+│   ├── github-guides/
+│   │   └── github-repo-beginner-analysis-template.md
+│   └── uiux/
+│       ├── prd-to-ui-guide.md
+│       ├── call-insight-stitch-workshop.md
+│       ├── uiux-tools-map.md
+│       └── call-insight-stitch-brief.md
 ├── skills/
 │   ├── sop-writer-skill/
 │   │   └── SKILL.md
@@ -85,7 +90,7 @@ agent-learning-map/
 
 ## 内容样稿
 
-当前已包含 17 篇内容：
+当前已包含 21 篇内容：
 
 | 内容 | 文件位置 | 用途 |
 |---|---|---|
@@ -106,6 +111,10 @@ agent-learning-map/
 | Workbuddy 学习指南 | `content/tool-pages/workbuddy-guide.md` | 医药企业内网智能办公助理指南 |
 | GitHub 下载项目 SOP | `content/sops/github-download-open-with-cursor-sop.md` | 操作流程样稿 |
 | GitHub 仓库新手解读模板 | `content/github-guides/github-repo-beginner-analysis-template.md` | 项目解读模板 |
+| UI/UX Part A：从 PRD 迈向 UI | `content/uiux/prd-to-ui-guide.md` | 从需求到 UI 设计与开发交付 |
+| UI/UX Part B：Call Insight × Stitch | `content/uiux/call-insight-stitch-workshop.md` | 移动端高保真 UI 实操闭环 |
+| UI/UX Part C：工具地图 | `content/uiux/uiux-tools-map.md` | 四类 UI/UX 工具的选择方法 |
+| Call Insight Stitch 设计简报 | `content/uiux/call-insight-stitch-brief.md` | Part B 的完整参考材料 |
 
 ## Agent Skills
 

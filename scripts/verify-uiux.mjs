@@ -23,3 +23,22 @@ for (const key of ['prd_to_ui', 'call_insight_stitch', 'uiux_tools_map', 'call_i
     throw new Error(`Missing compiled content key: ${key}`);
   }
 }
+
+for (const marker of ['id="heroCollage"', 'data-parallax="far"', 'data-parallax="mid"', 'data-parallax="near"', 'prefers-reduced-motion: reduce']) {
+  if (!prototype.includes(marker)) {
+    throw new Error(`Missing parallax marker: ${marker}`);
+  }
+}
+
+for (const marker of [
+  'href="#uiux"',
+  'id="uiux"',
+  'data-key="prd_to_ui"',
+  'data-key="call_insight_stitch"',
+  'data-key="uiux_tools_map"',
+  'uiux/call-insight-low-fi-wireframe.png'
+]) {
+  if (!prototype.includes(marker)) {
+    throw new Error(`Missing UI/UX chapter marker: ${marker}`);
+  }
+}

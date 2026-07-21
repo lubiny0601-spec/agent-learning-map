@@ -61,7 +61,6 @@
       color: var(--ink);
       font-family: var(--font);
       line-height: 1.68;
-      background-attachment: fixed;
     }
     button, input, select { font: inherit; }
     a { color: inherit; text-decoration: none; }
@@ -177,6 +176,135 @@
       gap: 24px;
       align-items: stretch;
       margin-bottom: 24px;
+    }
+
+    .collage-hero {
+      display: block;
+      position: relative;
+      isolation: isolate;
+      min-height: 530px;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, .68);
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, #5fd486 0%, #8ce6a9 47%, #f7f4de 100%);
+      box-shadow: 0 24px 60px rgba(27, 78, 51, .14);
+    }
+    .collage-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .44;
+      background-image: radial-gradient(rgba(18, 62, 45, .22) 1px, transparent 1px);
+      background-size: 16px 16px;
+      mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+    }
+    .collage-hero .hero-main,
+    .collage-hero .hero-side {
+      position: relative;
+      z-index: 4;
+      background: rgba(255, 255, 250, .84);
+      border-color: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .collage-hero .hero-main {
+      width: min(61%, 690px);
+      min-height: 474px;
+      padding: 44px;
+      box-shadow: 0 18px 38px rgba(17, 52, 36, .15);
+    }
+    .collage-hero .hero-main::after { background: rgba(94, 212, 134, .24); }
+    .collage-hero .hero-side {
+      position: absolute;
+      z-index: 5;
+      right: 28px;
+      bottom: 28px;
+      width: min(34%, 365px);
+      padding: 20px;
+      transform: rotate(1.2deg);
+      box-shadow: 0 18px 34px rgba(17, 52, 36, .16);
+    }
+    .collage-hero .lead {
+      max-width: 580px;
+      text-align: left;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      margin: 0 0 26px;
+    }
+    .collage-layer {
+      position: absolute;
+      z-index: 1;
+      transform: translate3d(0, var(--parallax-y, 0px), 0);
+      will-change: transform;
+      pointer-events: none;
+    }
+    .collage-far { --depth: .15; inset: 0; z-index: 0; }
+    .collage-mid { --depth: .45; inset: 0; z-index: 2; }
+    .collage-near { --depth: 1; inset: 0; z-index: 3; }
+    .paper-note,
+    .paper-card,
+    .route-chip {
+      position: absolute;
+      background: #fffdf6;
+      color: #15251c;
+      border: 1px solid rgba(21, 37, 28, .1);
+      box-shadow: 0 16px 28px rgba(27, 78, 51, .16);
+    }
+    .paper-note {
+      width: 154px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font: 700 .74rem/1.35 var(--mono);
+      letter-spacing: .04em;
+    }
+    .note-prd { top: 52px; right: 68px; transform: rotate(-7deg); background: #fff1a8; }
+    .note-flow { top: 214px; right: 202px; transform: rotate(6deg); background: #bce6ff; }
+    .route-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      right: 64px;
+      bottom: 78px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .82rem;
+    }
+    .route-chip::before { content: "→"; color: #16834d; font-size: 1.1rem; }
+    .paper-card {
+      right: 95px;
+      top: 134px;
+      width: 250px;
+      min-height: 194px;
+      padding: 18px;
+      border-radius: 24px;
+      transform: rotate(7deg);
+    }
+    .paper-card .paper-kicker { color: #16834d; font: 700 .7rem var(--mono); letter-spacing: .1em; }
+    .paper-card h3 { margin: 18px 0 12px; font-size: 1.25rem; line-height: 1.08; }
+    .wireframe-lines { display: grid; gap: 7px; }
+    .wireframe-lines span { height: 9px; border-radius: 99px; background: #d6ecdd; }
+    .wireframe-lines span:nth-child(2) { width: 72%; background: #fee281; }
+    .wireframe-lines span:nth-child(3) { width: 88%; background: #a8d5f2; }
+    .mini-stamp {
+      position: absolute;
+      right: 332px;
+      bottom: 54px;
+      display: grid;
+      place-items: center;
+      width: 94px;
+      height: 94px;
+      border: 5px solid #193b2a;
+      border-radius: 50%;
+      color: #193b2a;
+      background: #fff7c7;
+      font: 700 .7rem/1.2 var(--mono);
+      text-align: center;
+      transform: rotate(-14deg);
     }
     
     .hero-main, .hero-side, .section, .reader {
@@ -741,8 +869,102 @@
       max-width: 620px;
     }
 
+    .uiux-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255, 226, 129, .74), transparent 15rem),
+        linear-gradient(135deg, rgba(241, 255, 226, .88), rgba(255, 255, 250, .88));
+      border-color: rgba(44, 133, 76, .16);
+    }
+    .uiux-stage {
+      position: relative;
+      height: 116px;
+      margin: -4px 0 4px;
+      overflow: hidden;
+    }
+    .uiux-stage::before {
+      content: "";
+      position: absolute;
+      top: 57px;
+      left: 3%;
+      right: 3%;
+      border-top: 2px dashed rgba(30, 81, 204, .28);
+    }
+    .uiux-stage span {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 96px;
+      padding: 10px 14px;
+      border: 1px solid rgba(24, 31, 48, .1);
+      border-radius: 999px;
+      color: #172a20;
+      box-shadow: 0 9px 18px rgba(23, 42, 32, .11);
+      font: 700 .75rem var(--mono);
+      letter-spacing: .04em;
+      transform: translate3d(0, var(--parallax-y, 0px), 0) rotate(var(--tilt));
+      will-change: transform;
+    }
+    .uiux-stage span:nth-child(1) { --tilt: -5deg; left: 10%; top: 20px; background: #fff4ad; }
+    .uiux-stage span:nth-child(2) { --tilt: 4deg; left: 43%; top: 48px; background: #bfe8ff; }
+    .uiux-stage span:nth-child(3) { --tilt: -3deg; right: 8%; top: 18px; background: #fffdf7; }
+    .uiux-grid { position: relative; z-index: 1; }
+    .uiux-card {
+      min-height: 282px;
+      color: #172a20;
+      background: rgba(255, 255, 251, .87);
+      border-color: rgba(41, 105, 67, .15);
+      box-shadow: 0 13px 26px rgba(37, 88, 56, .1);
+      transform: rotate(var(--card-tilt));
+    }
+    .uiux-card:nth-child(1) { --card-tilt: -1.2deg; }
+    .uiux-card:nth-child(2) { --card-tilt: 1.1deg; background: rgba(255, 252, 232, .92); }
+    .uiux-card:nth-child(3) { --card-tilt: -.6deg; background: rgba(239, 249, 255, .92); }
+    .uiux-card:hover { transform: translateY(-8px) rotate(0); }
+    .uiux-card:focus-visible {
+      outline: 3px solid #1e9b59;
+      outline-offset: 4px;
+      transform: translateY(-4px) rotate(0);
+    }
+    .uiux-card .kind { color: #16834d; }
+    .uiux-card .card-foot { color: #265640; }
+    .uiux-card .arrow { color: #16834d; }
+    .uiux-reference {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      margin-top: 14px;
+      padding: 7px 10px;
+      border: 1px dashed rgba(22, 131, 77, .36);
+      border-radius: 10px;
+      color: #18623c;
+      background: rgba(255, 255, 255, .75);
+      cursor: pointer;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .uiux-reference:hover { background: #fff; }
+    .uiux-outcome {
+      position: relative;
+      z-index: 1;
+      margin: 28px 0 0;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(22, 131, 77, .35);
+      color: #265640;
+      font-weight: 700;
+      text-align: center;
+    }
+
     @media (max-width: 980px) {
       .hero, .reader-content, .builder-layout { grid-template-columns: 1fr; }
+      .collage-hero { min-height: auto; }
+      .collage-hero .hero-main { width: 66%; }
+      .collage-hero .hero-side { width: 31%; }
+      .paper-card { right: 50px; opacity: .75; }
+      .note-flow { right: 140px; }
+      .uiux-stage { height: 94px; }
       .grid, .grid.four { grid-template-columns: repeat(2, 1fr); }
       .reader-sidebar { border-right: 0; border-bottom: 1px solid var(--rule); }
       .article { max-height: none; }
@@ -752,10 +974,25 @@
       .app { padding: 12px 14px 50px; }
       .topbar { position: static; align-items: flex-start; flex-direction: column; }
       .hero-main, .hero-side, .section { padding: 24px; border-radius: 24px; }
+      .collage-hero { padding: 16px; min-height: 620px; }
+      .collage-hero .hero-main { width: 100%; min-height: 388px; padding: 28px; }
+      .collage-hero .hero-side { right: 16px; bottom: 16px; width: calc(100% - 32px); transform: rotate(.4deg); }
+      .paper-card { right: 24px; top: 308px; width: 190px; min-height: 136px; opacity: .58; }
+      .note-prd { top: 24px; right: 16px; width: 124px; }
+      .note-flow, .route-chip, .mini-stamp { display: none; }
+      .uiux-stage { height: 84px; }
+      .uiux-stage span:nth-child(1) { left: 2%; }
+      .uiux-stage span:nth-child(2) { left: 34%; }
+      .uiux-stage span:nth-child(3) { right: 1%; }
+      .uiux-card { min-height: 246px; transform: none; }
       .grid, .grid.four { grid-template-columns: 1fr; }
       .section-head { align-items: flex-start; flex-direction: column; }
       .article { padding: 22px; }
       .hero-main { min-height: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .collage-layer, .uiux-card { transform: none !important; transition: none !important; }
     }
   </style>
 </head>
@@ -778,17 +1015,29 @@
         <a href="#tools">工具库</a>
         <a href="#sops">SOP与Skill</a>
         <a href="#prd">PRD专题</a>
+        <a href="#uiux">UI/UX 实操</a>
         <a href="#deployment">部署与分享</a>
       </nav>
       <input class="search" id="searchInput" type="search" placeholder="搜索 概念、Gemini、SOP、代码..." aria-label="搜索">
     </header>
 
     <main id="home">
-      <section class="hero">
+      <section class="hero collage-hero" id="heroCollage" aria-labelledby="heroTitle">
+        <div class="collage-layer collage-far" data-parallax="far" aria-hidden="true">
+          <div class="paper-note note-prd">01 / 想法 → PRD<br>定义边界与主路径</div>
+          <div class="paper-note note-flow">02 / 流程<br>让每一步可完成</div>
+        </div>
+        <div class="collage-layer collage-mid" data-parallax="mid" aria-hidden="true">
+          <div class="paper-card">
+            <div class="paper-kicker">FIELD NOTE / UI</div>
+            <h3>把需求画成<br>可以交付的界面</h3>
+            <div class="wireframe-lines"><span></span><span></span><span></span></div>
+          </div>
+        </div>
         <div class="hero-main">
           <div>
             <div class="eyebrow">AI Agent Beginner Guide</div>
-            <h1>给 AI 初学者的一张工具学习路线图</h1>
+            <h1 id="heroTitle">给 AI 初学者的一张工具学习路线图</h1>
             <p class="lead">掌握网页端 Gemini 与 NotebookLM 的全能日常工作流；学会使用 Cursor、MCP 配置、Prompt 优化与 GitHub 导入 Skill，顺利完成你的第一个真实任务。</p>
             <div class="actions">
               <button class="btn" onclick="document.querySelector('#templates').scrollIntoView({behavior:'smooth'})">Prompt 拼装生成器</button>
@@ -811,7 +1060,7 @@
           <div class="progress-card">
             <div class="progress-header">
               <span>学习总进度</span>
-              <strong id="progressText">0 / 25 篇</strong>
+              <strong id="progressText">0 / 30 篇</strong>
             </div>
             <div class="progress-bar-bg">
               <div class="progress-bar-fill" id="progressBarFill"></div>
@@ -828,6 +1077,10 @@
             <div class="mini-step"><span class="num">3</span><span>学习完每一篇后标记状态，随时追踪你的路线图进度。</span></div>
           </div>
         </aside>
+        <div class="collage-layer collage-near" data-parallax="near" aria-hidden="true">
+          <div class="route-chip">PRD → UI → Demo</div>
+          <div class="mini-stamp">LEARN<br>BY<br>MAKING</div>
+        </div>
       </section>
 
       <!-- Section: Interactive Prompt Builder -->
@@ -1124,6 +1377,50 @@
             <div class="card-foot"><span>理论与实操双轨专题</span><span class="arrow">→</span></div>
           </article>
         </div>
+      </section>
+
+      <!-- Section: UI/UX Practice -->
+      <section class="section uiux-section" id="uiux" aria-labelledby="uiuxTitle">
+        <div class="uiux-stage" aria-hidden="true">
+          <span data-parallax="far">PRD</span>
+          <span data-parallax="mid">线框图</span>
+          <span data-parallax="near">高保真 UI</span>
+        </div>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">UI/UX PRACTICE PATH</p>
+            <h2 id="uiuxTitle">从 PRD 到可交付 UI</h2>
+            <p>把业务需求、线框图、设计生成和前端交付连成一条可反复练习的路径。</p>
+          </div>
+        </div>
+        <div class="grid uiux-grid">
+          <article class="card uiux-card" data-key="prd_to_ui" role="button" tabindex="0" aria-label="开始学习 Part A：从 PRD 迈向 UI" onclick="openReader('prd_to_ui')" onkeydown="handleCardKey(event, 'prd_to_ui')">
+            <div>
+              <div class="kind">PART A · 45 分钟</div>
+              <h3>从 PRD 迈向 UI</h3>
+              <p>先定义产品边界和主路径，再通过低保真流程、页面资产台账与设计规则，得到可交接的 UI 交付包。</p>
+            </div>
+            <div class="card-foot"><span>需求 → 流程 → 设计规则</span><span class="arrow">→</span></div>
+          </article>
+          <article class="card uiux-card" data-key="call_insight_stitch" role="button" tabindex="0" aria-label="开始学习 Part B：Call Insight 与 Stitch 实操" onclick="openReader('call_insight_stitch')" onkeydown="handleCardKey(event, 'call_insight_stitch')">
+            <div>
+              <div class="kind">PART B · 60 分钟</div>
+              <h3>Call Insight × Stitch 实操</h3>
+              <p>用低保真线框图和设计简报生成、优化、交接高保真移动端 UI，并把规则沉淀为 DESIGN.md。</p>
+              <button class="uiux-reference" type="button" onclick="event.stopPropagation(); openReader('call_insight_stitch_brief')">打开完整设计简报</button>
+            </div>
+            <div class="card-foot"><span>线框图 → Stitch → Demo</span><span class="arrow">→</span></div>
+          </article>
+          <article class="card uiux-card" data-key="uiux_tools_map" role="button" tabindex="0" aria-label="开始学习 Part C：UIUX 工具地图" onclick="openReader('uiux_tools_map')" onkeydown="handleCardKey(event, 'uiux_tools_map')">
+            <div>
+              <div class="kind">PART C · 20 分钟</div>
+              <h3>UI/UX 工具地图</h3>
+              <p>在生成第一稿、修到可交付、打磨交互和沉淀规范的不同阶段，选择真正解决问题的工具。</p>
+            </div>
+            <div class="card-foot"><span>选工具 → 提质量 → 稳定执行</span><span class="arrow">→</span></div>
+          </article>
+        </div>
+        <p class="uiux-outcome">最终成果：PRD → 低保真线框图 → 高保真 UI → 前端 Demo</p>
       </section>
 
       <!-- Section: Deployment & Sharing -->
@@ -1809,6 +2106,12 @@
       reader.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    function handleCardKey(event, key) {
+      if (event.target !== event.currentTarget || (event.key !== 'Enter' && event.key !== ' ')) return;
+      event.preventDefault();
+      openReader(key);
+    }
+
     function scrollArticle(index) {
       const headings = document.querySelectorAll('#article h2');
       if (headings[index]) headings[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2120,6 +2423,27 @@ ${rulesText || '无特殊安全规则限制。'}
       onRoleChange();
       updateProgress();
     });
+
+    const parallaxLayers = [...document.querySelectorAll('[data-parallax]')];
+    let parallaxQueued = false;
+
+    function updateParallax() {
+      parallaxQueued = false;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const offset = Math.min(window.scrollY, 900);
+      parallaxLayers.forEach((layer) => {
+        const speed = { far: 0.15, mid: 0.45, near: 1 }[layer.dataset.parallax] || 0;
+        layer.style.setProperty('--parallax-y', `${Math.round(offset * speed * -0.12)}px`);
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!parallaxQueued) {
+        parallaxQueued = true;
+        requestAnimationFrame(updateParallax);
+      }
+    }, { passive: true });
+    updateParallax();
 
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
