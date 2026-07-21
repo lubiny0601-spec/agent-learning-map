@@ -1019,11 +1019,12 @@
       --accent: var(--ink);
       --accent2: var(--accent-magenta);
       --soft: var(--surface-soft);
-      --font: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font: 'Instrument Sans', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --max: 1280px;
     }
 
-    body { background: var(--canvas); color: var(--ink); font-weight: 400; }
+    html { font-synthesis: none; }
+    body { background: var(--canvas); color: var(--ink); font-weight: 400; line-height: 1.72; letter-spacing: 0; }
     a { text-underline-offset: 3px; }
     code { color: var(--ink); background: var(--surface-soft); border-color: var(--hairline); border-radius: 2px; }
     pre { background: var(--ink); border-color: var(--ink); border-radius: 8px; }
@@ -1071,9 +1072,19 @@
     .nav-toggle { display: none; }
 
     h1, h2, h3 { color: var(--ink); font-family: var(--font); }
-    h1 { max-width: 780px; font-size: clamp(3rem, 7vw, 5.4rem); font-weight: 400; letter-spacing: -.055em; line-height: 1; }
-    h2 { font-size: clamp(2rem, 4vw, 4rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.08; }
-    h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.025em; }
+    h1 { max-width: 760px; font-size: clamp(2.35rem, 5.6vw, 4.4rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.18; }
+    h2 { font-size: clamp(1.8rem, 3.8vw, 3.2rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.22; }
+    h3 { font-size: 1.28rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.35; }
+    .lead, .section-head p, .card p, .footer-cta p { color: var(--ink); font-weight: 400; letter-spacing: 0; }
+    .lead { max-width: 680px; font-size: 1.1rem; line-height: 1.8; }
+    .section-head p { max-width: 680px; line-height: 1.8; }
+    .card h3 { margin: 18px 0 10px; }
+    .card p { font-size: .98rem; line-height: 1.75; }
+    .article { font-size: 1rem; }
+    .article p, .article li { color: var(--ink); line-height: 1.85; letter-spacing: 0; }
+    .article h2 { font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.28; }
+    .article h3 { font-size: 1.22rem; line-height: 1.4; }
+    .card .kind, .kind-meta { line-height: 1.5; }
     .eyebrow { color: var(--ink); font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; }
     .eyebrow::before { background: var(--ink); border-radius: 0; }
 
@@ -1097,8 +1108,6 @@
     .collage-hero .hero-main { min-height: 500px; border-radius: 24px; }
     .collage-hero .hero-main::after { display: none; }
     .collage-hero .hero-side { border-radius: 24px; }
-    .lead, .section-head p, .card p, .footer-cta p { color: var(--ink); font-weight: 400; }
-    .lead { font-size: 1.22rem; line-height: 1.45; }
     .paper-note, .paper-card, .route-chip { color: var(--ink); border-color: var(--hairline); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
     .note-prd { background: var(--block-lime); }
     .note-flow { background: var(--block-lilac); }
@@ -1207,7 +1216,8 @@
       .app { padding: 0 16px 48px; }
       .topbar { margin: 0 -16px 24px; padding: 10px 16px; }
       .collage-hero { margin-left: -16px; margin-right: -16px; padding: 16px; }
-      h1 { font-size: clamp(3rem, 15vw, 3.7rem); }
+      h1 { font-size: clamp(2.2rem, 11vw, 3.15rem); line-height: 1.2; }
+      h2 { font-size: clamp(1.7rem, 9vw, 2.2rem); line-height: 1.25; }
       .actions { display: grid; grid-template-columns: 1fr; }
       .btn { width: 100%; }
       .section { margin: 48px 0; padding: 32px 16px; }
