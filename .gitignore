@@ -38,3 +38,4 @@ temp/
 # Local AI / agent outputs
 .trae-local/
 .cache/
+.worktrees/
