@@ -1293,6 +1293,33 @@
     @media (prefers-reduced-motion: reduce) {
       body { background-attachment: scroll; }
     }
+
+    .card { position: relative; isolation: isolate; }
+    .card > :not(.card-primary-link) { position: relative; z-index: 2; pointer-events: none; }
+    .card-primary-link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+    .card-primary-link:focus-visible { outline: 3px solid var(--meadow-deep); outline-offset: 4px; }
+    .kind { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .course-entry {
+      position: relative;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--meadow-deep);
+      border-radius: 999px;
+      background: var(--paper-warm);
+      color: var(--meadow-deep);
+      font: 700 .82rem var(--font);
+      cursor: pointer;
+      pointer-events: auto;
+    }
+    .course-entry:hover,
+    .course-entry:focus-visible { background: var(--meadow-deep); color: #fff; outline: none; }
+    .course-entry:active { transform: scale(.97); }
+    .kind-meta { color: var(--ink); font: 500 .72rem var(--mono); }
+    .card-action { margin-left: auto; font-weight: 700; }
+    .card:hover { border-color: var(--meadow-deep); box-shadow: 0 14px 40px rgba(23, 63, 42, .12); }
   </style>
 </head>
 <body>
@@ -2386,6 +2413,39 @@
       }
     }
 
+    const entryLabelByKey = {
+      ai_beginner_101: 'AI 基础',
+      gemini_sop: 'Gemini SOP',
+      notebooklm_sop: 'NotebookLM',
+      ai_poster: 'AI 海报',
+      ai_ppt: 'AI PPT',
+      ai_video: 'AI 视频',
+      ai_dashboard: 'AI 看板',
+      ai_research: 'AI 文献检索',
+      ai_market_analysis: 'AI 市场分析',
+      cursor: 'Cursor',
+      github: 'GitHub',
+      repo: '项目解读',
+      sop_writer: 'SOP 撰写',
+      tool_research: 'AI 工具研究',
+      github_project_reader: 'GitHub 项目阅读',
+      prompt_optimizer: 'Prompt 调优',
+      claude_code: 'Claude Code',
+      trae: 'Trae',
+      codex: 'Codex',
+      workbuddy: 'Workbuddy',
+      mcp_helper: 'MCP 配置',
+      error_troubleshooter: '排错 Skill',
+      risk_safety_review: '安全审查',
+      prompt_template_skill: 'Prompt 模板',
+      ai_prd_guide: 'AI PRD',
+      prd_to_ui: 'PRD → UI',
+      call_insight_stitch: 'Call Insight',
+      uiux_tools_map: 'UI/UX 工具地图',
+      static_hosting_guide: '静态部署',
+      wechat_sharing_guide: '微信分享'
+    };
+
     function openReader(key) {
       if (!content[key]) {
         alert('教程内容正在加载中或不存在！');
@@ -2410,6 +2470,66 @@
       if (event.target !== event.currentTarget || (event.key !== 'Enter' && event.key !== ' ')) return;
       event.preventDefault();
       openReader(key);
+    }
+
+    function initLearningEntries() {
+      document.querySelectorAll('.card[data-key]').forEach((card) => {
+        if (card.dataset.entryReady === 'true') return;
+
+        const key = card.dataset.key;
+        if (!content[key]) return;
+
+        const title = card.querySelector('h3')?.textContent.trim() || entryLabelByKey[key] || key;
+        const label = entryLabelByKey[key] || title;
+        card.dataset.entryReady = 'true';
+        card.removeAttribute('onclick');
+        card.removeAttribute('onkeydown');
+        card.removeAttribute('role');
+        card.removeAttribute('tabindex');
+        card.removeAttribute('aria-label');
+
+        const primaryLink = document.createElement('a');
+        primaryLink.className = 'card-primary-link';
+        primaryLink.href = '#reader';
+        primaryLink.setAttribute('aria-label', `开始学习：${title}`);
+        primaryLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          openReader(key);
+        });
+        card.prepend(primaryLink);
+
+        const kind = card.querySelector('.kind');
+        if (kind) {
+          const metaText = kind.textContent.trim();
+          kind.textContent = '';
+
+          const entry = document.createElement('button');
+          entry.type = 'button';
+          entry.className = 'course-entry';
+          entry.textContent = label;
+          entry.setAttribute('aria-label', `打开课程：${title}`);
+          entry.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            openReader(key);
+          });
+
+          const meta = document.createElement('span');
+          meta.className = 'kind-meta';
+          meta.textContent = metaText;
+          kind.append(entry, meta);
+        }
+
+        const footer = card.querySelector('.card-foot');
+        if (footer && !footer.querySelector('.card-action')) {
+          const action = document.createElement('span');
+          action.className = 'card-action';
+          action.textContent = '开始学习';
+          const arrow = footer.querySelector('.arrow');
+          footer.insertBefore(action, arrow || null);
+        }
+      });
     }
 
     function scrollArticle(index) {
@@ -2720,6 +2840,7 @@ ${rulesText || '无特殊安全规则限制。'}
 
     // Initialize progress and builder
     document.addEventListener('DOMContentLoaded', () => {
+      initLearningEntries();
       const navToggle = document.getElementById('navToggle');
       const primaryNav = document.getElementById('primaryNav');
       if (navToggle && primaryNav) {

@@ -22,3 +22,13 @@ if (!fs.existsSync(backgroundPath) || fs.statSync(backgroundPath).size < 50_000)
 for (const marker of ['spring-learning-meadow.png', '--meadow-deep:', '--paper-warm:']) {
   if (!html.includes(marker)) throw new Error(`Missing background marker: ${marker}`);
 }
+
+for (const marker of [
+  "primaryLink.className = 'card-primary-link'",
+  "entry.className = 'course-entry'",
+  'function initLearningEntries()',
+  'entryLabelByKey',
+  'card-action'
+]) {
+  if (!html.includes(marker)) throw new Error(`Missing entry marker: ${marker}`);
+}
