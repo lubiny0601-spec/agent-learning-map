@@ -18,10 +18,11 @@
 
 ---
 
-### Task 1: Add Typography Regression Assertions
+### Task 1: Apply Typography Assertions and the Reading-First Type System
 
 **Files:**
 - Modify: `scripts/verify-interface.mjs`
+- Modify: `prototype/index.html`
 
 **Interfaces:**
 - Consumes: UTF-8 source of `prototype/index.html`
@@ -51,19 +52,7 @@ Run: `npm.cmd run verify:interface`
 
 Expected: FAIL with `Missing typography marker: --font: 'Instrument Sans', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC'`.
 
----
-
-### Task 2: Apply the Reading-First Type System
-
-**Files:**
-- Modify: `prototype/index.html`
-- Test: `scripts/verify-interface.mjs`
-
-**Interfaces:**
-- Consumes: the final visual-system `<style>` block and the current `--font` custom property
-- Produces: explicit CJK fallback, content-safe heading scale, readable paragraph rhythm, and a narrow-screen title rule
-
-- [ ] **Step 1: Update the final typography tokens and global rhythm**
+- [ ] **Step 3: Update the final typography tokens and global rhythm**
 
 In the final visual-system style block, replace the existing final `--font` definition and add these exact rules after `body`:
 
@@ -74,7 +63,7 @@ html { font-synthesis: none; }
 body { line-height: 1.72; letter-spacing: 0; }
 ```
 
-- [ ] **Step 2: Replace the final heading and reading rules**
+- [ ] **Step 4: Replace the final heading and reading rules**
 
 Replace the final `h1`, `h2`, `h3`, `.lead`, and text rules with this complete block:
 
@@ -95,7 +84,7 @@ h3 { font-size: 1.28rem; font-weight: 700; letter-spacing: -.015em; line-height:
 .card .kind, .kind-meta { line-height: 1.5; }
 ```
 
-- [ ] **Step 3: Add the mobile title cap**
+- [ ] **Step 5: Add the mobile title cap**
 
 Inside the final `@media (max-width: 560px)` block, replace the current `h1` rule with:
 
@@ -104,13 +93,13 @@ h1 { font-size: clamp(2.2rem, 11vw, 3.15rem); line-height: 1.2; }
 h2 { font-size: clamp(1.7rem, 9vw, 2.2rem); line-height: 1.25; }
 ```
 
-- [ ] **Step 4: Run the focused check and confirm the green state**
+- [ ] **Step 6: Run the focused check and confirm the green state**
 
 Run: `npm.cmd run verify:interface`
 
 Expected: PASS with exit code 0.
 
-- [ ] **Step 5: Commit the typography slice**
+- [ ] **Step 7: Commit the typography slice**
 
 ```powershell
 git add prototype/index.html scripts/verify-interface.mjs
@@ -119,7 +108,7 @@ git commit -m "feat: refine reading-first typography"
 
 ---
 
-### Task 3: Rebuild and Verify All Existing Behavior
+### Task 2: Rebuild and Verify All Existing Behavior
 
 **Files:**
 - Verify: `prototype/index.html`
