@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.js",
-    "verify:uiux": "node scripts/verify-uiux.mjs"
+    "verify:uiux": "node scripts/verify-uiux.mjs",
+    "verify:interface": "node scripts/verify-interface.mjs"
   },
   "dependencies": {}
 }

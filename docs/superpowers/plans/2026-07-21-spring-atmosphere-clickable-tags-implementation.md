@@ -31,32 +31,14 @@
 
 - [ ] **Step 1: Write the failing verification script**
 
-Create `scripts/verify-interface.mjs` with these exact checks:
+Create `scripts/verify-interface.mjs` with these exact baseline checks:
 
 ```js
 import fs from 'node:fs';
 import path from 'node:path';
 
 const htmlPath = path.resolve('prototype/index.html');
-const backgroundPath = path.resolve('prototype/assets/spring-learning-meadow.png');
 const html = fs.readFileSync(htmlPath, 'utf8');
-
-if (!fs.existsSync(backgroundPath) || fs.statSync(backgroundPath).size < 50_000) {
-  throw new Error('Missing or undersized spring background asset');
-}
-
-for (const marker of [
-  'spring-learning-meadow.png',
-  '--meadow-deep:',
-  '--paper-warm:',
-  "primaryLink.className = 'card-primary-link'",
-  'className = \'course-entry\'',
-  'function initLearningEntries()',
-  'entryLabelByKey',
-  'prefers-reduced-motion: reduce'
-]) {
-  if (!html.includes(marker)) throw new Error(`Missing interface marker: ${marker}`);
-}
 
 const courseCards = [...html.matchAll(/<article class="card[^"]*"[^>]*data-key="([^"]+)"/g)];
 if (courseCards.length < 25) {
@@ -77,15 +59,18 @@ Add this script to `package.json` without changing the existing scripts:
 "verify:interface": "node scripts/verify-interface.mjs"
 ```
 
-- [ ] **Step 3: Run the command and confirm the expected red state**
+- [ ] **Step 3: Run the command and confirm the green baseline**
 
 Run: `npm.cmd run verify:interface`
 
-Expected: FAIL with `Missing or undersized spring background asset`.
+Expected: PASS with exit code 0.
 
-- [ ] **Step 4: Commit only after Tasks 2 and 3 make the gate green**
+- [ ] **Step 4: Commit the independent verification gate**
 
-The verification file remains uncommitted until the background and interaction implementation pass it.
+```powershell
+git add package.json scripts/verify-interface.mjs
+git commit -m "test: add interface verification gate"
+```
 
 ---
 
@@ -100,7 +85,28 @@ The verification file remains uncommitted until the background and interaction i
 - Consumes: existing CSS variables and `#heroCollage`
 - Produces: `--meadow-deep`, `--paper-warm`, local background URL, mobile and reduced-motion fallbacks
 
-- [ ] **Step 1: Generate the original background asset**
+- [ ] **Step 1: Extend the verifier with background assertions**
+
+Append this check to `scripts/verify-interface.mjs`:
+
+```js
+const backgroundPath = path.resolve('prototype/assets/spring-learning-meadow.png');
+if (!fs.existsSync(backgroundPath) || fs.statSync(backgroundPath).size < 50_000) {
+  throw new Error('Missing or undersized spring background asset');
+}
+
+for (const marker of ['spring-learning-meadow.png', '--meadow-deep:', '--paper-warm:']) {
+  if (!html.includes(marker)) throw new Error(`Missing background marker: ${marker}`);
+}
+```
+
+- [ ] **Step 2: Run the extended verifier and confirm the expected red state**
+
+Run: `npm.cmd run verify:interface`
+
+Expected: FAIL with `Missing or undersized spring background asset`.
+
+- [ ] **Step 3: Generate the original background asset**
 
 Use the image generation skill and save the result as `prototype/assets/spring-learning-meadow.png`. Use this prompt:
 
@@ -108,7 +114,7 @@ Use the image generation skill and save the result as `prototype/assets/spring-l
 Create an original wide 16:9 atmospheric background for an educational web interface. A dreamy spring meadow painted with a mix of soft photography and impressionist brush texture: deep forest-green grass in the lower third, misty sage and pale green atmosphere above, a few soft lavender and ivory flower bokeh shapes, gentle diffused daylight, subtle paper grain, calm and sophisticated. Keep the central and left-middle areas low-detail so interface text remains readable. No people, no buildings, no text, no letters, no logos, no event poster layout, and do not reproduce any existing image or identifiable composition. High resolution, landscape orientation.
 ```
 
-- [ ] **Step 2: Add the background and surface CSS override**
+- [ ] **Step 4: Add the background and surface CSS override**
 
 Append the following focused tokens and rules to the final visual-system `<style>` block in `prototype/index.html`, adjusting only existing selectors named here:
 
@@ -193,11 +199,18 @@ body {
 }
 ```
 
-- [ ] **Step 3: Check asset and visual markers**
+- [ ] **Step 5: Check asset and visual markers**
 
 Run: `npm.cmd run verify:interface`
 
-Expected: it advances past the background checks and fails at `primaryLink.className = 'card-primary-link'`.
+Expected: PASS with exit code 0.
+
+- [ ] **Step 6: Commit the background slice**
+
+```powershell
+git add prototype/assets/spring-learning-meadow.png prototype/index.html scripts/verify-interface.mjs
+git commit -m "feat: add spring meadow interface atmosphere"
+```
 
 ---
 
@@ -211,7 +224,29 @@ Expected: it advances past the background checks and fails at `primaryLink.class
 - Consumes: `.card[data-key]`, each card's `h3`, `.kind`, `.card-foot`, and existing `openReader(key)`
 - Produces: `entryLabelByKey`, `initLearningEntries()`, `.card-primary-link`, `.course-entry`, `.card-action`
 
-- [ ] **Step 1: Add stable short labels for all unique lesson keys**
+- [ ] **Step 1: Extend the verifier with course-entry assertions**
+
+Append this check to `scripts/verify-interface.mjs`:
+
+```js
+for (const marker of [
+  "primaryLink.className = 'card-primary-link'",
+  "entry.className = 'course-entry'",
+  'function initLearningEntries()',
+  'entryLabelByKey',
+  'card-action'
+]) {
+  if (!html.includes(marker)) throw new Error(`Missing entry marker: ${marker}`);
+}
+```
+
+- [ ] **Step 2: Run the extended verifier and confirm the expected red state**
+
+Run: `npm.cmd run verify:interface`
+
+Expected: FAIL with `Missing entry marker: primaryLink.className = 'card-primary-link'`.
+
+- [ ] **Step 3: Add stable short labels for all unique lesson keys**
 
 Add this object before `openReader`:
 
@@ -250,7 +285,7 @@ const entryLabelByKey = {
 };
 ```
 
-- [ ] **Step 2: Add semantic card and label initialization**
+- [ ] **Step 4: Add semantic card and label initialization**
 
 Add this function after `handleCardKey`:
 
@@ -316,11 +351,11 @@ function initLearningEntries() {
 }
 ```
 
-- [ ] **Step 3: Initialize entries on page load**
+- [ ] **Step 5: Initialize entries on page load**
 
 Call `initLearningEntries();` at the start of the existing `DOMContentLoaded` callback, before progress updates.
 
-- [ ] **Step 4: Add interaction styles**
+- [ ] **Step 6: Add interaction styles**
 
 Add these rules to the final visual-system style block:
 
@@ -353,13 +388,13 @@ Add these rules to the final visual-system style block:
 .card:hover { border-color: var(--meadow-deep); box-shadow: 0 14px 40px rgba(23, 63, 42, .12); }
 ```
 
-- [ ] **Step 5: Run the interface verification gate**
+- [ ] **Step 7: Run the interface verification gate**
 
 Run: `npm.cmd run verify:interface`
 
 Expected: PASS with exit code 0.
 
-- [ ] **Step 6: Commit the complete red-green slice**
+- [ ] **Step 8: Commit the complete red-green slice**
 
 ```powershell
 git add package.json scripts/verify-interface.mjs prototype/index.html prototype/assets/spring-learning-meadow.png
