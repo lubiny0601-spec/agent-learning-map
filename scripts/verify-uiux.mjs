@@ -16,3 +16,10 @@ for (const file of required) {
     throw new Error(`Missing UI/UX resource: ${file}`);
   }
 }
+
+const prototype = fs.readFileSync(path.resolve('prototype/index.html'), 'utf8');
+for (const key of ['prd_to_ui', 'call_insight_stitch', 'uiux_tools_map', 'call_insight_stitch_brief']) {
+  if (!prototype.includes(`"${key}": {`)) {
+    throw new Error(`Missing compiled content key: ${key}`);
+  }
+}
