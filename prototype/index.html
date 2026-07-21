@@ -995,6 +995,226 @@
       .collage-layer, .uiux-card { transform: none !important; transition: none !important; }
     }
   </style>
+  <style>
+    /* Visual system: monochrome workspace frame + single pastel learning panels */
+    :root {
+      --canvas: #ffffff;
+      --ink: #000000;
+      --hairline: #e6e6e6;
+      --hairline-soft: #f1f1f1;
+      --surface-soft: #f7f7f5;
+      --block-lime: #dceeb1;
+      --block-lilac: #c5b0f4;
+      --block-cream: #f4ecd6;
+      --block-mint: #c8e6cd;
+      --block-pink: #efd4d4;
+      --block-coral: #f3c9b6;
+      --block-navy: #1f1d3d;
+      --accent-magenta: #ff3d8b;
+      --success: #1ea64a;
+      --bg: var(--canvas);
+      --bg2: var(--canvas);
+      --muted: var(--ink);
+      --rule: var(--hairline);
+      --accent: var(--ink);
+      --accent2: var(--accent-magenta);
+      --soft: var(--surface-soft);
+      --font: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max: 1280px;
+    }
+
+    body { background: var(--canvas); color: var(--ink); font-weight: 400; }
+    a { text-underline-offset: 3px; }
+    code { color: var(--ink); background: var(--surface-soft); border-color: var(--hairline); border-radius: 2px; }
+    pre { background: var(--ink); border-color: var(--ink); border-radius: 8px; }
+    .app { max-width: var(--max); padding: 16px 32px 96px; }
+
+    .topbar {
+      top: 0;
+      min-height: 56px;
+      margin: 0 -32px 48px;
+      padding: 10px 32px;
+      border: 0;
+      border-bottom: 1px solid var(--hairline);
+      border-radius: 0;
+      background: var(--canvas);
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .brand { color: var(--ink); }
+    .logo { width: 32px; height: 32px; border-radius: 2px; background: var(--ink); color: var(--canvas); }
+    .nav { gap: 2px; }
+    .nav a, .small-btn {
+      min-height: 40px;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 9999px;
+      color: var(--ink);
+      background: transparent;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+    .nav a:hover, .small-btn:hover { color: var(--canvas); background: var(--ink); transform: none; }
+    .search {
+      min-height: 40px;
+      padding: 10px 14px;
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      background: var(--canvas);
+      color: var(--ink);
+      box-shadow: none;
+    }
+    .search:focus, .form-group input[type="text"]:focus, .form-group select:focus {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 3px rgba(0,0,0,.14);
+    }
+    .nav-toggle { display: none; }
+
+    h1, h2, h3 { color: var(--ink); font-family: var(--font); }
+    h1 { max-width: 780px; font-size: clamp(3rem, 7vw, 5.4rem); font-weight: 400; letter-spacing: -.055em; line-height: 1; }
+    h2 { font-size: clamp(2rem, 4vw, 4rem); font-weight: 400; letter-spacing: -.045em; line-height: 1.08; }
+    h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.025em; }
+    .eyebrow { color: var(--ink); font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; }
+    .eyebrow::before { background: var(--ink); border-radius: 0; }
+
+    .hero-main, .hero-side, .section, .reader {
+      border: 1px solid var(--hairline);
+      background: var(--canvas);
+      border-radius: 24px;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .collage-hero {
+      min-height: 580px;
+      padding: 32px;
+      border: 0;
+      border-radius: 0;
+      background: var(--canvas);
+      box-shadow: none;
+    }
+    .collage-hero::before { display: none; }
+    .collage-hero .hero-main, .collage-hero .hero-side { border-color: var(--hairline); background: var(--canvas); box-shadow: none; backdrop-filter: none; }
+    .collage-hero .hero-main { min-height: 500px; border-radius: 24px; }
+    .collage-hero .hero-main::after { display: none; }
+    .collage-hero .hero-side { border-radius: 24px; }
+    .lead, .section-head p, .card p, .footer-cta p { color: var(--ink); font-weight: 400; }
+    .lead { font-size: 1.22rem; line-height: 1.45; }
+    .paper-note, .paper-card, .route-chip { color: var(--ink); border-color: var(--hairline); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+    .note-prd { background: var(--block-lime); }
+    .note-flow { background: var(--block-lilac); }
+    .paper-card { background: var(--block-cream); }
+    .route-chip { background: var(--canvas); }
+    .route-chip::before { color: var(--ink); }
+    .mini-stamp { border-color: var(--ink); color: var(--ink); background: var(--block-mint); }
+    .wireframe-lines span { background: var(--canvas); }
+    .wireframe-lines span:nth-child(2) { background: var(--block-coral); }
+    .wireframe-lines span:nth-child(3) { background: var(--block-lilac); }
+
+    .btn {
+      min-height: 44px;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 9999px;
+      background: var(--ink);
+      color: var(--canvas);
+      font-weight: 500;
+      box-shadow: none;
+    }
+    .btn.secondary { border: 1px solid var(--hairline); background: var(--canvas); color: var(--ink); }
+    .btn:hover, .btn.secondary:hover { transform: scale(.98); background: var(--ink); color: var(--canvas); box-shadow: none; }
+    .tags .tag { border: 1px solid var(--hairline); border-radius: 6px; background: var(--surface-soft); color: var(--ink); }
+    .progress-card, .mini-step { border-color: var(--hairline); background: var(--surface-soft); box-shadow: none; }
+    .progress-bar-bg { background: var(--hairline-soft); }
+    .progress-bar-fill { background: var(--ink); }
+    .mini-step .num { background: var(--ink); color: var(--canvas); border-radius: 9999px; }
+
+    .section { margin: 96px 0; padding: 48px; border-color: var(--hairline); }
+    .figma-surface { border: 0; box-shadow: none; }
+    .surface-lime { background: var(--block-lime); }
+    .surface-lilac { background: var(--block-lilac); }
+    .surface-cream { background: var(--block-cream); }
+    .surface-mint { background: var(--block-mint); }
+    .surface-coral { background: var(--block-coral); }
+    .surface-navy { background: var(--block-navy); color: var(--canvas); }
+    .surface-navy h2, .surface-navy h3, .surface-navy p, .surface-navy .kind, .surface-navy .card-foot { color: var(--canvas); }
+    .surface-navy .eyebrow { color: var(--canvas); }
+    .surface-navy .eyebrow::before { background: var(--canvas); }
+    .surface-navy .card { background: #000; border-color: var(--canvas); color: var(--canvas); }
+    .surface-navy .card::before { display: none; }
+    .surface-navy .card:hover { background: var(--canvas); border-color: var(--canvas); color: var(--ink); }
+    .surface-navy .card:hover h3, .surface-navy .card:hover p, .surface-navy .card:hover .kind, .surface-navy .card:hover .card-foot { color: var(--ink); }
+    .surface-navy .arrow { background: var(--canvas); color: var(--ink); }
+
+    .grid { gap: 24px; }
+    .card {
+      min-height: 224px;
+      padding: 24px;
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      background: var(--surface-soft);
+      box-shadow: none;
+    }
+    .card::before { display: none; }
+    .card:hover { transform: translateY(-3px); border-color: var(--ink); background: var(--canvas); box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+    .card:focus-visible { outline: 3px solid var(--accent-magenta); outline-offset: 3px; }
+    .card .kind { color: var(--ink); font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; }
+    .card-foot { color: var(--ink); }
+    .arrow { width: 40px; height: 40px; border: 0; border-radius: 9999px; background: var(--canvas); color: var(--ink); }
+    .card:hover .arrow { background: var(--ink); color: var(--canvas); transform: none; }
+    .card.completed { border-color: var(--success); background: var(--canvas); }
+    .card.completed::after { background: var(--success); }
+
+    .builder-form, .form-group input[type="text"], .form-group select { border-color: var(--hairline); border-radius: 8px; background: var(--canvas); box-shadow: none; }
+    .builder-form { background: var(--canvas); }
+    .form-group label { color: var(--ink); }
+    .form-preview { border-color: var(--hairline); border-radius: 8px; background: var(--surface-soft); }
+    .reader { border-radius: 0; }
+    .reader-head { border-bottom: 0; background: var(--ink); color: var(--canvas); }
+    .reader-head strong, .reader-head .small-btn { color: var(--canvas); }
+    .reader-head .small-btn { background: transparent; border-color: rgba(255,255,255,.4); }
+    .reader-content { background: var(--canvas); }
+    .reader-sidebar { border-color: var(--hairline); background: var(--surface-soft); }
+    .reader-sidebar a { color: var(--ink); border-radius: 6px; }
+    .reader-sidebar a:hover { background: var(--canvas); }
+    .article { color: var(--ink); }
+    .article h2, .article h3 { color: var(--ink); }
+    .article a { color: var(--ink); text-decoration: underline; }
+    .uiux-section { background: var(--block-lilac); border: 0; }
+    .uiux-stage::before { border-color: var(--ink); }
+    .uiux-stage span { border-color: var(--hairline); box-shadow: none; color: var(--ink); }
+    .uiux-stage span:nth-child(1) { background: var(--block-cream); }
+    .uiux-stage span:nth-child(2) { background: var(--block-mint); }
+    .uiux-stage span:nth-child(3) { background: var(--canvas); }
+    .uiux-card, .uiux-card:nth-child(2), .uiux-card:nth-child(3) { background: var(--canvas); border-color: var(--hairline); box-shadow: none; }
+    .uiux-card .kind, .uiux-card .card-foot, .uiux-card .arrow { color: var(--ink); }
+    .uiux-reference { border-color: var(--ink); border-radius: 9999px; color: var(--ink); background: var(--canvas); }
+    .uiux-outcome { border-color: var(--ink); color: var(--ink); }
+
+    @media (max-width: 960px) {
+      .app { padding: 12px 24px 64px; }
+      .topbar { margin: 0 -24px 32px; padding: 10px 24px; flex-wrap: wrap; }
+      .nav-toggle { display: inline-flex; min-height: 40px; align-items: center; border: 0; border-radius: 9999px; background: var(--ink); color: var(--canvas); padding: 8px 14px; font: 500 .88rem var(--font); }
+      .nav { display: none; order: 4; width: 100%; padding-top: 10px; border-top: 1px solid var(--hairline); }
+      .nav.is-open { display: flex; flex-direction: column; align-items: stretch; }
+      .nav a { width: 100%; }
+      .section { margin: 64px 0; }
+    }
+    @media (max-width: 768px) {
+      .figma-surface { margin-left: -24px; margin-right: -24px; border-radius: 0; }
+      .section { padding: 40px 24px; }
+    }
+    @media (max-width: 560px) {
+      .app { padding: 0 16px 48px; }
+      .topbar { margin: 0 -16px 24px; padding: 10px 16px; }
+      .collage-hero { margin-left: -16px; margin-right: -16px; padding: 16px; }
+      h1 { font-size: clamp(3rem, 15vw, 3.7rem); }
+      .actions { display: grid; grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .section { margin: 48px 0; padding: 32px 16px; }
+      .figma-surface { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
+      .card { border-radius: 8px; }
+    }
+  </style>
 </head>
 <body>
   <!-- WeChat Share Thumbnail Image Hack -->
@@ -1007,7 +1227,8 @@
         <span class="logo">A</span>
         <span>Agent 学习地图</span>
       </a>
-      <nav class="nav">
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav">菜单</button>
+      <nav class="nav" id="primaryNav">
         <a href="#templates">Prompt生成器</a>
         <a href="#beginners">零基础新手课</a>
         <a href="#applications">AI效率进阶</a>
@@ -1084,7 +1305,7 @@
       </section>
 
       <!-- Section: Interactive Prompt Builder -->
-      <section class="section" id="templates">
+      <section class="section figma-surface surface-lime" id="templates">
         <div class="section-head">
           <div>
             <h2>🤖 交互式 Prompt 拼装生成器</h2>
@@ -1179,7 +1400,7 @@
       </section>
 
       <!-- Section: AI Applications -->
-      <section class="section" id="applications">
+      <section class="section figma-surface surface-cream" id="applications">
         <div class="section-head">
           <div>
             <h2>医药 AI 效率进阶应用</h2>
@@ -1239,7 +1460,7 @@
       </section>
 
       <!-- Section: Paths -->
-      <section class="section" id="paths">
+      <section class="section figma-surface surface-navy" id="paths">
         <div class="section-head">
           <div>
             <h2>进阶开发路径</h2>
@@ -1283,7 +1504,7 @@
       </section>
 
       <!-- Section: Tools -->
-      <section class="section" id="tools">
+      <section class="section figma-surface surface-mint" id="tools">
         <div class="section-head">
           <div>
             <h2>热门工具学习页</h2>
@@ -1360,7 +1581,7 @@
       </section>
 
       <!-- Section: PRD Special -->
-      <section class="section" id="prd">
+      <section class="section figma-surface surface-coral" id="prd">
         <div class="section-head">
           <div>
             <h2>PRD 协同撰写专题 (进阶)</h2>
@@ -1380,7 +1601,7 @@
       </section>
 
       <!-- Section: UI/UX Practice -->
-      <section class="section uiux-section" id="uiux" aria-labelledby="uiuxTitle">
+      <section class="section uiux-section figma-surface surface-lilac" id="uiux" aria-labelledby="uiuxTitle">
         <div class="uiux-stage" aria-hidden="true">
           <span data-parallax="far">PRD</span>
           <span data-parallax="mid">线框图</span>
@@ -2420,6 +2641,20 @@ ${rulesText || '无特殊安全规则限制。'}
 
     // Initialize progress and builder
     document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.getElementById('navToggle');
+      const primaryNav = document.getElementById('primaryNav');
+      if (navToggle && primaryNav) {
+        const closeNav = () => {
+          navToggle.setAttribute('aria-expanded', 'false');
+          primaryNav.classList.remove('is-open');
+        };
+        navToggle.addEventListener('click', () => {
+          const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!isExpanded));
+          primaryNav.classList.toggle('is-open', !isExpanded);
+        });
+        primaryNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeNav));
+      }
       onRoleChange();
       updateProgress();
     });

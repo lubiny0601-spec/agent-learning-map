@@ -42,3 +42,25 @@ for (const marker of [
     throw new Error(`Missing UI/UX chapter marker: ${marker}`);
   }
 }
+
+for (const marker of [
+  '--canvas: #ffffff',
+  '--ink: #000000',
+  '--block-lime: #dceeb1',
+  '--block-lilac: #c5b0f4',
+  '--block-navy: #1f1d3d',
+  'figma-surface',
+  'navToggle',
+  'aria-expanded',
+  'class="section figma-surface surface-lime"',
+  'class="section figma-surface surface-cream"',
+  'class="section figma-surface surface-navy"',
+  'class="section figma-surface surface-mint"',
+  'class="section figma-surface surface-coral"',
+  'class="section uiux-section figma-surface surface-lilac"',
+  'id="primaryNav"'
+]) {
+  if (!prototype.includes(marker)) {
+    throw new Error(`Missing visual-system marker: ${marker}`);
+  }
+}
