@@ -56,7 +56,6 @@ Expected: FAIL with Missing today mission marker.
 
 ~~~html
 <section class="today-mission" id="todayMission" aria-labelledby="todayMissionTitle" data-key="ai_poster">
-  <div class="mission-kicker">TODAY'S SMALL WIN</div>
   <p class="mission-time">预计 10 分钟 · 已有教程</p>
   <h2 id="todayMissionTitle">完成一张 AI 海报</h2>
   <ol class="mission-steps">
@@ -193,10 +192,10 @@ Remove any duplicate body, section, card, or surface-navy rules below this block
   position: relative; overflow: hidden; padding: 24px;
   border: 1px solid var(--handbook-line); border-radius: 20px;
   background: linear-gradient(145deg, #fffdf6, #e8efcf);
-  box-shadow: 8px 10px 0 rgba(49,95,62,.1);
+  box-shadow: 0 18px 36px rgba(49,95,62,.14);
 }
-.today-mission::after { content: '✦'; position: absolute; right: 18px; top: 16px; color: var(--handbook-lilac); font-size: 28px; opacity: .85; }
-.mission-kicker, .mission-time { font: 700 .72rem/1.4 var(--mono); letter-spacing: .1em; color: var(--handbook-moss); }
+.today-mission::after { content: ''; position: absolute; right: 18px; top: 18px; width: 58px; height: 28px; opacity: .72; background: radial-gradient(circle at 12px 16px, var(--handbook-lilac) 0 3px, transparent 4px), radial-gradient(circle at 30px 8px, var(--handbook-leaf) 0 4px, transparent 5px), radial-gradient(circle at 48px 18px, #efd47b 0 3px, transparent 4px); }
+.mission-time { font: 700 .72rem/1.4 var(--mono); letter-spacing: .1em; color: var(--handbook-moss); }
 .mission-time { margin: 8px 0 14px; letter-spacing: .04em; }
 .today-mission h2 { max-width: 12ch; margin: 0; font-size: clamp(1.55rem, 2.2vw, 2rem); }
 .mission-steps { display: grid; gap: 10px; margin: 18px 0; padding: 0; list-style: none; }
