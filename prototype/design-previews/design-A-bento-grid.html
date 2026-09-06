@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent 学习地图 · Design A: Bento Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F5F7;--card:#FFFFFF;--ink:#1D1D1F;--muted:#86868B;--accent:#0D9488;
+  --accent-2:#2DD4BF;--amber:#D97706;--border:#E8E8ED;--radius:24px;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 6px 16px rgba(0,0,0,.04);
+  --shadow-hover:0 4px 12px rgba(0,0,0,.1),0 16px 40px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,245,247,.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1280px;margin:0 auto;padding:0 24px}
+.brand{font-weight:800;font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.brand-dot{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
+.nav-links{display:flex;gap:2px;list-style:none;flex-wrap:wrap}
+.nav-links a{padding:7px 14px;border-radius:10px;font-size:14px;font-weight:500;color:var(--muted);transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.04)}
+.search{width:180px;height:36px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:14px;outline:none;color:var(--ink);font-family:inherit}
+.search:focus{border-color:var(--accent)}
+@media(max-width:900px){.nav-links,.search{display:none}}
+
+/* Hero */
+.hero{padding:80px 0 48px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(13,148,136,.08);color:var(--accent);font-size:13px;font-weight:600;margin-bottom:20px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.05;max-width:800px;margin-bottom:16px}
+.hero p{font-size:18px;color:var(--muted);max-width:640px;line-height:1.6}
+.hero-stats{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap}
+.stat{display:flex;align-items:baseline;gap:8px}
+.stat b{font-size:28px;font-weight:800;color:var(--accent)}
+.stat span{font-size:14px;color:var(--muted)}
+
+/* Bento grid */
+.section{margin:64px 0}
+.section-head{margin-bottom:24px}
+.section-head .label{font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;display:block}
+.section-head h2{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:768px){.bento{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.bento{grid-template-columns:1fr}}
+.card-bento{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:box-shadow .3s,transform .3s;cursor:pointer;position:relative;overflow:hidden;flex-direction:column;display:flex}
+.card-bento:hover{box-shadow:var(--shadow-hover);transform:translateY(-3px)}
+.card-bento.wide{grid-column:span 2}
+.card-bento.tall{grid-row:span 2}
+@media(max-width:768px){.card-bento.wide{grid-column:span 1}.card-bento.tall{grid-row:span 1}}
+.card-bento .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:12px}
+.card-bento .tag::before{content:"";width:8px;height:8px;border-radius:50%}
+.card-bento[data-c="lime"] .tag::before{background:#8CAC63}
+.card-bento[data-c="cream"] .tag::before{background:#D8BD79}
+.card-bento[data-c="navy"] .tag::before{background:#1E293B}
+.card-bento[data-c="mint"] .tag::before{background:#73A886}
+.card-bento[data-c="coral"] .tag::before{background:#D89479}
+.card-bento[data-c="lilac"] .tag::before{background:#A78BFA}
+.card-bento h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;line-height:1.3}
+.card-bento p{font-size:14px;color:var(--muted);line-height:1.5;flex:1}
+.card-bento .arrow{margin-top:16px;font-size:13px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:4px;transition:gap .2s}
+.card-bento:hover .arrow{gap:8px}
+.card-bento.featured{background:linear-gradient(135deg,#0D9488,#14B8A6);color:#fff}
+.card-bento.featured p{color:rgba(255,255,255,.85)}
+.card-bento.featured .arrow{color:#fff}
+.card-bento.featured .tag{color:rgba(255,255,255,.8)}
+.card-bento.featured[data-c] .tag::before{background:#fff}
+
+/* Footer */
+.footer{text-align:center;padding:64px 0 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:80px}
+.footer strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="#"><span class="brand-dot">A</span>Agent 学习地图</a>
+  <div class="nav-links">
+    <a href="#" class="active">首页</a><a href="#">新手课</a><a href="#">效率进阶</a><a href="#">开发路径</a><a href="#">工具库</a><a href="#">SOP与Skill</a><a href="#">GEO实战</a><a href="#">视频生成</a>
+  </div>
+  <input class="search" type="search" placeholder="搜索">
+</div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">AI Agent Beginner Guide</div>
+    <h1>给 AI 初学者的一张工具学习路线图</h1>
+    <p>43 篇核心教程和 Skill 指南，覆盖从零基础 AI 入门到 GEO 监测实战、Skill 理论与数据分析 Agent 工作流。</p>
+    <div class="hero-stats">
+      <div class="stat"><b>43</b><span>篇教程</span></div>
+      <div class="stat"><b>11</b><span>个板块</span></div>
+      <div class="stat"><b>8</b><span>个 Skills</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="label">Path 00</span><h2>零基础 AI 新手课</h2></div>
+    <div class="bento">
+      <div class="card-bento wide featured" data-c="lime">
+        <div class="tag">核心术语 · 20分钟</div>
+        <h3>AI 核心名词大白话手册</h3>
+        <p>把 AI 领域最常听到的概念翻译成日常语言——什么是 Token、Context Window、幻觉、RAG，一篇就能建立基础词汇表。</p>
+        <div class="arrow">开始学习 →</div>
+      </div>
+      <div class="card-bento" data-c="lime"><div class="tag">网页端 · 15分钟</div><h3>Gemini SOP</h3><p>网页端 AI 体验入门。</p><div class="arrow">开始学习 →</div></div>
+      <div class="card-bento" data-c="lime"><div class="tag">文献处理 · 15分钟</div><h3>NotebookLM SOP</h3><p>文献全能处理工具。</p><div class="arrow">开始学习 →</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="label">Advanced</span><h2>Skill 理论与实战</h2></div>
+    <div class="bento">
+      <div class="card-bento" data-c="lime"><div class="tag">理论框架 · 25分钟</div><h3>Skill 理论知识与 Agent 分类</h3><p>Agent 两大流派、Skill 定义与 Prompt/Agent 关系、好 Skill 六要素和判断标准。</p><div class="arrow">开始学习 →</div></div>
+      <div class="card-bento" data-c="lime"><div class="tag">实操案例 · 20分钟</div><h3>会议纪要 Skill 实操对比</h3><p>20 分钟模拟会议记录，普通 Prompt vs Skill Prompt 输出对比。</p><div class="arrow">开始学习 →</div></div>
+      <div class="card-bento wide" data-c="lime"><div class="tag">获取方法 · 15分钟</div><h3>高质量 Skill 获取方法</h3><p>Skill 来源、GitHub CLI 英文搜索技巧、中文 vs 英文搜索结果对比、质量判断六维度。</p><div class="arrow">开始学习 →</div></div>
+      <div class="card-bento" data-c="lime"><div class="tag">工具配置 · 10分钟</div><h3>CC Switch 接入 DeepSeek</h3><p>多模型 Agent Shell 工作方式。</p><div class="arrow">开始学习 →</div></div>
+    </div>
+  </section>
+
+  <footer class="footer"><p><strong>Agent 学习地图</strong> · 从第一个微小任务开始，而不是从一大堆概念开始</p></footer>
+</div>
+</body>
+</html>
