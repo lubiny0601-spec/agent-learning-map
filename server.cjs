@@ -18,7 +18,11 @@ const MIME = {
 };
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split('?')[0]);
-  if (urlPath === '/') urlPath = '/prototype/index-codex.html';
+  if (urlPath === '/') {
+    res.writeHead(302, { Location: '/prototype/index-codex.html' });
+    res.end();
+    return;
+  }
   const filePath = path.join(ROOT, urlPath);
   const ext = path.extname(filePath).toLowerCase();
   fs.readFile(filePath, (err, data) => {

@@ -13,8 +13,14 @@
 ## 核心工具组合
 
 1. **NotebookLM/Gemini**：负责阅读指南，提炼出绝对合规、精准、通俗的患教文字。
-2. **DALL-E 3 (ChatGPT/Gemini)**：负责根据主题生成富有学术感、意境感且无侵权风险的底图背景。
+2. **图片生成工具**：负责根据主题生成富有学术感、意境感且无侵权风险的底图背景。主流选择包括：
+   * **GPT 原生图片生成（ChatGPT）**：理解中文提示词能力强，适合快速出图。
+   * **Nano Banana（Gemini 图片生成）**：擅长多图一致性和精细编辑，适合迭代调整。
+   * **Midjourney**：艺术质感和画面完成度高，适合追求视觉效果的封面。
+   * **FLUX**：写实和细节表现出色，开源生态活跃。
 3. **Canva (Canvas)/稿定设计**：负责套用海报模板，将图文拼接导出。
+
+> **时间标注**：本文内容截至 2026 年 10 月。图片生成工具迭代极快，具体可用模型和入口请以各平台官方页面为准。
 
 ---
 
@@ -34,7 +40,7 @@
 
 ### 第二步：用 AI 绘制意境底图
 不要在百度直接搜图（有侵权风险），也不要让 AI 画精细的生理结构（AI 容易把胰脏或血管画错，造成学术硬伤）。推荐使用**抽象意境风**。
-* 打开 ChatGPT (DALL-E 3) 或 Gemini。
+* 打开你常用的图片生成工具（ChatGPT、Gemini/Nano Banana、Midjourney 等）。
 * 发送绘图 Prompt：
   ```text
   A minimalist, premium medical background for a poster, conceptual style. A warm beam of light shining through abstract healthy cells, soft blue and orange warm color palette (HSL tailored colors), clean space in the middle for text overlay, high resolution, professional pharmaceutical branding style, no text, 9:16 aspect ratio.
@@ -59,5 +65,5 @@
 请为我输出：
 1. 3 个备选的海报主标题（风格要求温馨、引发共鸣、控制在 15 字内）。
 2. 海报中下部需要呈现的 3 条核心行动呼吁（例如：如何早期识别迹象）。
-3. 适合发给 Midjourney/DALL-E 3 生成背景图的英文提示词（Prompt），画面风格要求是“抽象温暖、关爱脑健康”意境，并且中间留白。
+3. 适合发给任意图片生成工具（如 Midjourney、Nano Banana、FLUX 等）生成背景图的英文提示词（Prompt），画面风格要求是"抽象温暖、关爱脑健康"意境，并且中间留白。
 ```

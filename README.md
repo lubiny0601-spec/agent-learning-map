@@ -37,6 +37,7 @@ agent-learning-map/
 ├── .gitignore
 ├── prototype/
 │   ├── index.html
+│   ├── content-data.js
 │   └── _shared/
 │       └── fonts/
 ├── content/
@@ -57,16 +58,42 @@ agent-learning-map/
 │   │   ├── claude-code-guide.md
 │   │   ├── trae-guide.md
 │   │   ├── codex-guide.md
-│   │   └── workbuddy-guide.md
+│   │   ├── workbuddy-guide.md
+│   │   ├── antigravity-guide.md
+│   │   └── lovable-guide.md
 │   ├── sops/
 │   │   └── github-download-open-with-cursor-sop.md
 │   ├── github-guides/
 │   │   └── github-repo-beginner-analysis-template.md
-│   └── uiux/
-│       ├── prd-to-ui-guide.md
-│       ├── call-insight-stitch-workshop.md
-│       ├── uiux-tools-map.md
-│       └── call-insight-stitch-brief.md
+│   ├── uiux/
+│   │   ├── prd-to-ui-guide.md
+│   │   ├── call-insight-stitch-workshop.md
+│   │   ├── uiux-tools-map.md
+│   │   └── call-insight-stitch-brief.md
+│   ├── data-analytics/
+│   │   ├── data-analytics-skill-workflow.md
+│   │   └── non-codex-analytics-prompt.md
+│   ├── deployment/
+│   │   ├── static-hosting-guide.md
+│   │   └── wechat-sharing-guide.md
+│   ├── deployment-advanced/
+│   │   └── dashboard-deploy-full-guide.md
+│   ├── geo-mastery/
+│   │   ├── geo-concept-intro.md
+│   │   ├── geo-tool-requirements.md
+│   │   └── geo-development-guide.md
+│   ├── skill-mastery/
+│   │   ├── skill-theory-and-agent-classification.md
+│   │   ├── skill-acquisition-guide.md
+│   │   ├── meeting-minutes-skill-case.md
+│   │   └── cc-switch-deepseek-guide.md
+│   ├── video-generation/
+│   │   ├── ai-video-workflow.md
+│   │   └── video-case-sifuno.md
+│   ├── mcp/
+│   │   └── mcp-guide.md
+│   └── security/
+│       └── data-security-and-compliance.md
 ├── skills/
 │   ├── sop-writer-skill/
 │   │   └── SKILL.md
@@ -88,33 +115,114 @@ agent-learning-map/
     └── skill-examples/
 ```
 
-## 内容样稿
+## 内容清单
 
-当前已包含 21 篇内容：
+当前已包含 40 篇内容，按学习主题分为八类。
+
+### 入门与基础
 
 | 内容 | 文件位置 | 用途 |
 |---|---|---|
-| AI 核心名词大白话手册 | `content/beginner-guides/ai-glossary.md` | 新手词汇名词解释 |
+| AI 核心名词大白话手册（15 个词条） | `content/beginner-guides/ai-glossary.md` | 涵盖 LLM、Prompt、Agent、MCP、Tool Use、推理模型、Vibe Coding 等核心概念 |
 | Gemini 医药实战 SOP | `content/beginner-guides/gemini-sop.md` | 网页端 AI 实战使用指南 |
-| NotebookLM 全能工作流 SOP | `content/beginner-guides/notebooklm-sop.md` | 文献阅读与工作流（测验/PPT/海报） |
+| NotebookLM 全能工作流 SOP | `content/beginner-guides/notebooklm-sop.md` | 文献阅读与工作流（测验/PPT/海报/播客） |
 | AI 协同写 PRD 实战指南 | `content/beginner-guides/ai-prd-guide.md` | 产品思维与六轮对话写 PRD 实操指南 |
+| MCP 入门指南 | `content/mcp/mcp-guide.md` | 理解 MCP 是什么、为什么重要、怎么连接外部工具 |
+| 数据安全与合规指南 | `content/security/data-security-and-compliance.md` | AI 使用中的数据脱敏、合规出境、密钥保护 |
+
+### 工具学习页
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
+| Cursor 新手学习页 | `content/tool-pages/cursor-beginner-guide.md` | 编辑器内人机协作修改项目 |
+| Claude Code 学习指南 | `content/tool-pages/claude-code-guide.md` | 命令行 Agent 终端助手使用指南 |
+| Trae 学习指南 | `content/tool-pages/trae-guide.md` | 中文 AI IDE 与 Builder 自动构建指南 |
+| OpenAI Codex 学习指南 | `content/tool-pages/codex-guide.md` | OpenAI 官方 Agent：IDE / 终端 / 云端三种形态 |
+| Workbuddy 学习指南 | `content/tool-pages/workbuddy-guide.md` | 医药企业内网智能办公助理指南 |
+| Google Antigravity 学习指南 | `content/tool-pages/antigravity-guide.md` | Google 原生 Agent 编程环境 |
+| Lovable 学习指南 | `content/tool-pages/lovable-guide.md` | 用自然语言直接生成 Web 应用的 Vibe Coding 工具 |
+
+### AI 应用实战
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
 | AI 制作海报指南 | `content/ai-applications/ai-poster-guide.md` | 医药疾病宣传海报制作 SOP |
 | AI 制作 PPT 指南 | `content/ai-applications/ai-ppt-guide.md` | 学术科室会 PPT 自动生成 SOP |
 | AI 制作视频指南 | `content/ai-applications/ai-video-guide.md` | 患教与内训短视频制作 SOP |
 | AI 制作数据看板 | `content/ai-applications/ai-dashboard-guide.md` | 学术会议医生参会看板制作 SOP |
 | AI 检索医学资料 | `content/ai-applications/ai-research-guide.md` | 临床数据与学术文献精准检索 SOP |
 | AI 市场准入竞品分析 | `content/ai-applications/ai-market-analysis-guide.md` | 国采/集采竞品 SWOT 定位分析 SOP |
-| Cursor 新手学习页 | `content/tool-pages/cursor-beginner-guide.md` | 工具学习页样稿 |
-| Claude Code 学习指南 | `content/tool-pages/claude-code-guide.md` | 命令行 Agent 终端助手使用指南 |
-| Trae 学习指南 | `content/tool-pages/trae-guide.md` | 免费中文 AI IDE 编辑器指南 |
-| OpenAI Codex 学习指南 | `content/tool-pages/codex-guide.md` | 底层代码理解与 API 接口调用指南 |
-| Workbuddy 学习指南 | `content/tool-pages/workbuddy-guide.md` | 医药企业内网智能办公助理指南 |
-| GitHub 下载项目 SOP | `content/sops/github-download-open-with-cursor-sop.md` | 操作流程样稿 |
-| GitHub 仓库新手解读模板 | `content/github-guides/github-repo-beginner-analysis-template.md` | 项目解读模板 |
+
+### Skill 进阶与数据分析
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
+| Skill 理论知识：从 Prompt 到 Skill | `content/skill-mastery/skill-theory-and-agent-classification.md` | Agent 两大流派分类与好 Skill 六要素 |
+| 高质量 Skill 获取方法 | `content/skill-mastery/skill-acquisition-guide.md` | 用 GitHub CLI 搜索、筛选、验证 Skill |
+| 会议纪要 Skill 实操案例 | `content/skill-mastery/meeting-minutes-skill-case.md` | 普通 Prompt 与 Skill Prompt 的输出对比 |
+| Claude Desktop 接入 DeepSeek | `content/skill-mastery/cc-switch-deepseek-guide.md` | 多模型切换工具 CC Switch 使用指南 |
+| 数据分析 Agent Skills 工作流 | `content/data-analytics/data-analytics-skill-workflow.md` | 14 个数据分析 skill 的路由框架 |
+| 非 Codex 环境的数据分析提示词 | `content/data-analytics/non-codex-analytics-prompt.md` | 在普通网页端复现 Skills 工作流 |
+
+### UI/UX 实战
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
 | UI/UX Part A：从 PRD 迈向 UI | `content/uiux/prd-to-ui-guide.md` | 从需求到 UI 设计与开发交付 |
 | UI/UX Part B：Call Insight × Stitch | `content/uiux/call-insight-stitch-workshop.md` | 移动端高保真 UI 实操闭环 |
 | UI/UX Part C：工具地图 | `content/uiux/uiux-tools-map.md` | 四类 UI/UX 工具的选择方法 |
 | Call Insight Stitch 设计简报 | `content/uiux/call-insight-stitch-brief.md` | Part B 的完整参考材料 |
+| 课堂演示源文件 | `content/uiux/part-a-source.md` | Part A 的原始课堂材料 |
+
+### GEO 与视频专题
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
+| GEO 概念入门 | `content/geo-mastery/geo-concept-intro.md` | 从搜索结果到 AI 答案，GEO 四问框架 |
+| GEO 监测工具页面需求 | `content/geo-mastery/geo-tool-requirements.md` | 单页 GEO 监测工具的功能与设计 |
+| GEO 监测工具开发指南 | `content/geo-mastery/geo-development-guide.md` | 从页面到 API 的端到端 Vibe Coding 实战 |
+| AI 视频生成工作流 | `content/video-generation/ai-video-workflow.md` | 从需求到成片的闭环全流程 |
+| 思福诺暖场视频实战 Case | `content/video-generation/video-case-sifuno.md` | Gemini + Kling + 剪映完整实战记录 |
+
+### 部署与交付
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
+| 静态网站托管部署指南 | `content/deployment/static-hosting-guide.md` | GitHub Pages / Vercel / Netlify / Cloudflare 部署 |
+| 微信分享与部署诊断指南 | `content/deployment/wechat-sharing-guide.md` | 微信卡片配置与 404 故障排查 |
+| Dashboard 部署实战 | `content/deployment-advanced/dashboard-deploy-full-guide.md` | CHECK → DEPLOY → VERIFY → PEER TEST 四步交付 |
+
+### 操作 SOP 与模板
+
+| 内容 | 文件位置 | 用途 |
+|---|---|---|
+| GitHub 下载项目 SOP | `content/sops/github-download-open-with-cursor-sop.md` | 从 GitHub 下载并打开项目的完整流程 |
+| GitHub 仓库新手解读模板 | `content/github-guides/github-repo-beginner-analysis-template.md` | 解读任意 GitHub 项目的通用模板 |
+
+## 推荐学习路径
+
+不同基础的人可以从不同入口开始。以下三条路径覆盖主要使用场景。
+
+### 路径一：零基础入门（约 1 周）
+
+1. 先读 `content/beginner-guides/ai-glossary.md` 建立词汇基础。
+2. 用 `content/beginner-guides/gemini-sop.md` 和 `content/beginner-guides/notebooklm-sop.md` 体验网页端 AI。
+3. 按 `content/sops/github-download-open-with-cursor-sop.md` 学会获取项目。
+4. 用 `content/tool-pages/cursor-beginner-guide.md` 或 `content/tool-pages/trae-guide.md` 完成第一次 AI 编程。
+5. 读 `content/security/data-security-and-compliance.md` 建立安全意识。
+
+### 路径二：应用落地（约 2 周）
+
+1. 用 `content/ai-applications/` 下的指南制作海报、PPT、视频、数据看板。
+2. 用 `content/ai-applications/ai-research-guide.md` 和 `content/ai-applications/ai-market-analysis-guide.md` 做检索与市场分析。
+3. 按 `content/deployment-advanced/dashboard-deploy-full-guide.md` 把成果发布上线。
+
+### 路径三：进阶能力（约 3-4 周）
+
+1. 读 `content/skill-mastery/skill-theory-and-agent-classification.md` 理解 Prompt → Skill → Agent。
+2. 用 `content/skill-mastery/skill-acquisition-guide.md` 建立自己的 Skill 库。
+3. 学习 `content/mcp/mcp-guide.md` 连接外部工具与数据源。
+4. 用 `content/geo-mastery/geo-concept-intro.md` 和 `content/geo-mastery/geo-development-guide.md` 做一个完整项目。
 
 ## Agent Skills
 
@@ -184,21 +292,30 @@ prototype/index.html
 
 ## 下一步计划
 
-建议下一批内容继续补齐：
+本轮内容更新已完成：
 
 - [x] Codex 新手学习页
 - [x] Claude Code 新手学习页
-- [ ] Antigravity 新手学习页
-- [ ] Skill 导入 Agent SOP
+- [x] Antigravity 新手学习页
+- [x] Lovable 新手学习页
+- [x] MCP 入门指南
+- [x] 数据安全与合规指南
+- [x] AI 术语表扩充至 15 个词条
+- [x] Trae / Workbuddy 内容深度补齐
+- [x] README 内容清单与学习路径同步
+
+建议下一批内容继续补齐：
+
 - [ ] API Key 配置 SOP
 - [ ] 让 Agent 读懂项目结构 SOP
+- [ ] AI 搜索工具对比指南
+- [ ] AI 音频与播客生成指南
 
 建议下一批 Skill 增加：
 
-- `prompt-template-skill`
 - `beginner-explainer-skill`
-- `risk-safety-review-skill`
 - `ai-news-digest-skill`
+- `data-analytics-skill`
 
 ## 仓库描述建议
 
